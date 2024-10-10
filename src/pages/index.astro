@@ -1,26 +1,28 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import { SITE, HOME, SOCIALS } from "@consts";
+import { HOME, CONTACT } from "@consts";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-const blog = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+const blog = HOME.maxBlogItems
+  ? (await getCollection("blog"))
+      .filter((post) => !post.data.draft)
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .slice(0, HOME.maxBlogItems)
+  : [];
 
-const projects: CollectionEntry<"projects">[] = (
-  await getCollection("projects")
-)
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+const projects: CollectionEntry<"projects">[] = HOME.maxProjectItems
+  ? (await getCollection("projects"))
+      .filter((project) => !project.data.draft)
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .slice(0, HOME.maxProjectItems)
+  : [];
 ---
 
-<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<Layout title={HOME.metadata.title} description={HOME.metadata.description}>
   <Container>
     <aside data-pagefind-ignore>
       <h1 class="font-semibold text-black dark:text-white">
@@ -116,27 +118,19 @@ const projects: CollectionEntry<"projects">[] = (
           </article>
           <ul class="not-prose flex flex-wrap gap-2">
             {
-              SOCIALS.map((SOCIAL) => (
+              CONTACT.map((c) => (
                 <li class="flex gap-x-2 text-nowrap">
                   <Link
-                    href={SOCIAL.HREF}
+                    href={c.href}
                     external
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                    aria-label={`${HOME.metadata.title} on ${c.name}`}
                   >
-                    {SOCIAL.NAME}
+                    {c.name}
                   </Link>
                   {"/"}
                 </li>
               ))
             }
-            <li class="line-clamp-1">
-              <Link
-                href={`mailto:${SITE.EMAIL}`}
-                aria-label={`Email ${SITE.TITLE}`}
-              >
-                {SITE.EMAIL}
-              </Link>
-            </li>
           </ul>
         </section>
       </div>

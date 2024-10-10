@@ -1,40 +1,78 @@
-import type { Metadata, Site, Socials } from "@types";
-
-export const SITE: Site = {
-  TITLE: "Astro Micro",
-  DESCRIPTION: "Astro Micro is an accessible and lightweight blog.",
-  EMAIL: "trevortylerlee@gmail.com",
-  NUM_POSTS_ON_HOMEPAGE: 5,
-  NUM_PROJECTS_ON_HOMEPAGE: 3,
+type Metadata = {
+  title: string;
+  description?: string;
 };
 
-export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Astro Micro is an accessible theme for Astro.",
+type Site = {
+  metadata: Metadata;
 };
 
-export const BLOG: Metadata = {
-  TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+type CollectionSite = Site & {
+  pageSize?: number;
 };
 
-export const PROJECTS: Metadata = {
-  TITLE: "Projects",
-  DESCRIPTION:
-    "A collection of my projects with links to repositories and live demos.",
+export const HOME: Site & {
+  maxBlogItems?: number;
+  maxProjectItems?: number;
+  maxTalkItems?: number;
+} = {
+  metadata: {
+    title: "Astro Mili Dev",
+    description: "Astro Micro is an accessible and lightweight blog.",
+  },
+  maxBlogItems: 5,
+  maxProjectItems: 3,
+  maxTalkItems: 3,
 };
 
-export const SOCIALS: Socials = [
+export const BLOG: CollectionSite = {
+  metadata: {
+    title: "Blog",
+    description: "A collection of articles on topics I am passionate about.",
+  },
+  pageSize: 10,
+};
+
+export const PROJECTS: CollectionSite = {
+  metadata: {
+    title: "Projects",
+    description:
+      "A collection of my projects with links to repositories and live demos.",
+  },
+  pageSize: 10,
+};
+
+export const TALKS: CollectionSite = {
+  metadata: {
+    title: "Talks",
+    description:
+      "A collection of my projects with links to repositories and live demos.",
+  },
+  pageSize: 10,
+};
+
+export const CONTACT: {
+  name: string;
+  href: string;
+  displayName?: string;
+}[] = [
   {
-    NAME: "X (formerly Twitter)",
-    HREF: "https://twitter.com/boogerbuttcheeks",
+    name: "Email",
+    href: "mailto:email@example.com",
+    displayName: "email@example.com",
   },
   {
-    NAME: "GitHub",
-    HREF: "https://github.com/trevortylerlee",
+    name: "X",
+    href: "https://x.com/BillGates",
+    displayName: "@BillGates",
   },
   {
-    NAME: "LinkedIn",
-    HREF: "https://www.linkedin.com/in/trevortylerlee",
+    name: "GitHub",
+    href: "https://github.com/dotnet",
+    displayName: "dotnet",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/williamhgates/",
   },
 ];
