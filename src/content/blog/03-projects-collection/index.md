@@ -1,6 +1,5 @@
 ---
 title: "Projects Collection"
-description: "How to add projects to your portfolio."
 date: "2024-03-20"
 ---
 

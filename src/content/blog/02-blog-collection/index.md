@@ -1,6 +1,5 @@
 ---
 title: "Blog Collection"
-description: "How to add posts to the blog."
 date: "2024-03-21"
 ---
 
