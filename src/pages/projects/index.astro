@@ -10,10 +10,7 @@ const projects = (await getCollection("projects"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout
-  title={PROJECTS.metadata.title}
-  description={PROJECTS.metadata.description}
->
+<Layout title={PROJECTS.title}>
   <Container>
     <aside data-pagefind-ignore>
       <div class="space-y-10">

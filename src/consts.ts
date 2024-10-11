@@ -1,10 +1,5 @@
-type Metadata = {
-  title: string;
-  description?: string;
-};
-
 type Site = {
-  metadata: Metadata;
+  title: string;
 };
 
 type CollectionSite = Site & {
@@ -16,38 +11,24 @@ export const HOME: Site & {
   maxProjectItems?: number;
   maxTalkItems?: number;
 } = {
-  metadata: {
-    title: "Astro Mili Dev",
-    description: "Astro Micro is an accessible and lightweight blog.",
-  },
+  title: "Astro Mili Dev",
   maxBlogItems: 5,
   maxProjectItems: 3,
   maxTalkItems: 3,
 };
 
 export const BLOG: CollectionSite = {
-  metadata: {
-    title: "Blog",
-    description: "A collection of articles on topics I am passionate about.",
-  },
+  title: "Blog",
   pageSize: 10,
 };
 
 export const PROJECTS: CollectionSite = {
-  metadata: {
-    title: "Projects",
-    description:
-      "A collection of my projects with links to repositories and live demos.",
-  },
+  title: "Projects",
   pageSize: 10,
 };
 
 export const TALKS: CollectionSite = {
-  metadata: {
-    title: "Talks",
-    description:
-      "A collection of my projects with links to repositories and live demos.",
-  },
+  title: "Talks",
   pageSize: 10,
 };
 
@@ -76,3 +57,16 @@ export const CONTACT: {
     href: "https://www.linkedin.com/in/williamhgates/",
   },
 ];
+
+export const GLOBAL: Site & {
+  description: string;
+  author: string;
+  email: string;
+} = {
+  title: "Astro Mili Dev",
+  description: "An accessible and lightweight Astro theme for developers.",
+  author: "Bartosz Lenar",
+  email:
+    CONTACT.find((c) => c.name === "Email")?.href.substring("mailto:".length) ||
+    "",
+};

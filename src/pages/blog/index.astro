@@ -25,7 +25,7 @@ const posts = data.reduce((acc: Acc, post) => {
 const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
-<Layout title={BLOG.metadata.title} description={BLOG.metadata.description}>
+<Layout title={BLOG.title}>
   <Container>
     <aside data-pagefind-ignore>
       <div class="space-y-10">
