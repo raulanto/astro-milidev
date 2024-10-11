@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
 import { PROJECTS } from "@consts";
+import ProjectCardButton from "@components/ProjectCardButton.astro";
 
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
@@ -24,7 +24,7 @@ const projects = (await getCollection("projects"))
           {
             projects.map((project) => (
               <li>
-                <ArrowCard entry={project} />
+                <ProjectCardButton entry={project} />
               </li>
             ))
           }

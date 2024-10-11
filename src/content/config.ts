@@ -14,12 +14,12 @@ const projects = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    shortDescription: z.string(),
     date: z.coerce.date(),
     lastUpdateDate: z.coerce.date().optional(),
     draft: z.boolean().optional(),
-    demoURL: z.string().optional(),
-    repoURL: z.string().optional(),
+    shortDescription: z.string(),
+    demoUrl: z.string().optional(),
+    repoUrl: z.string().optional(),
   }),
 });
 
@@ -30,9 +30,9 @@ const talks = defineCollection({
     date: z.coerce.date(),
     lastUpdateDate: z.coerce.date().optional(),
     draft: z.boolean().optional(),
-    demoURL: z.string().optional(),
-    repoURL: z.string().optional(),
+    slidesUrl: z.string().optional(),
+    repoUrl: z.string().optional(),
   }),
 });
 
-export const collections = { blog, projects };
+export const collections = { blog, projects, talks };

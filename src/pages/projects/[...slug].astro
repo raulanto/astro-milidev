@@ -23,7 +23,7 @@ const project = Astro.props;
 const { Content, headings } = await project.render();
 ---
 
-<Layout title={project.data.title} description={project.data.description}>
+<Layout title={project.data.title}>
   <Container>
     <div class="animate">
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>
@@ -42,16 +42,16 @@ const { Content, headings } = await project.render();
         {project.data.title}
       </h1>
       {
-        (project.data.demoURL || project.data.repoURL) && (
+        (project.data.demoUrl || project.data.repoUrl) && (
           <nav class="flex gap-1">
-            {project.data.demoURL && (
-              <Link href={project.data.demoURL} external>
+            {project.data.demoUrl && (
+              <Link href={project.data.demoUrl} external>
                 demo
               </Link>
             )}
-            {project.data.demoURL && project.data.repoURL && <span>/</span>}
-            {project.data.repoURL && (
-              <Link href={project.data.repoURL} external>
+            {project.data.demoUrl && project.data.repoUrl && <span>/</span>}
+            {project.data.repoUrl && (
+              <Link href={project.data.repoUrl} external>
                 repo
               </Link>
             )}
