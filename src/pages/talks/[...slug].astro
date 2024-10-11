@@ -3,21 +3,18 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime } from "@lib/utils";
+import { getFilteredCollectionEntries, readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 
 export async function getStaticPaths() {
-  const talks = (await getCollection("talks"))
-    .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return talks.map((project) => ({
-    params: { slug: project.slug },
-    props: project,
+  const { entries } = await getFilteredCollectionEntries("talks");
+  return entries.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
   }));
 }
-type Props = CollectionEntry<"talks">;
 
 const talk = Astro.props;
 const { Content, headings } = await talk.render();

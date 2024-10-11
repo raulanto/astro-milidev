@@ -1,34 +1,34 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import { HOME, CONTACT, GLOBAL } from "@consts";
+import { HOME, CONTACT, GLOBAL, type CollectionName } from "@consts";
 import BlogCardButton from "@components/BlogCardButton.astro";
 import ProjectCardButton from "@components/ProjectCardButton.astro";
 import TalkCardButton from "@components/TalkCardButton.astro";
 import Link from "@components/Link.astro";
-import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { getFilteredCollectionEntries } from "@lib/utils";
 
-const blog: CollectionEntry<"blog">[] = HOME.maxBlogItems
-  ? (await getCollection("blog"))
-      .filter((post) => !post.data.draft)
-      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-      .slice(0, HOME.maxBlogItems)
-  : [];
+async function getCollectionEntries<T extends CollectionName>(
+  collectionName: T,
+  maxItems: number,
+): Promise<CollectionEntry<T>[]> {
+  const { entries } = await getFilteredCollectionEntries(collectionName, {
+    page: 1,
+    pageSize: maxItems,
+  });
 
-const projects: CollectionEntry<"projects">[] = HOME.maxProjectItems
-  ? (await getCollection("projects"))
-      .filter((project) => !project.data.draft)
-      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-      .slice(0, HOME.maxProjectItems)
-  : [];
+  return entries;
+}
 
-const talks: CollectionEntry<"talks">[] = HOME.maxTalkItems
-  ? (await getCollection("talks"))
-      .filter((project) => !project.data.draft)
-      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-      .slice(0, HOME.maxTalkItems)
-  : [];
+const blog = await getCollectionEntries("blog", HOME.maxBlogItems ?? 0);
+
+const projects = await getCollectionEntries(
+  "projects",
+  HOME.maxProjectItems ?? 0,
+);
+
+const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
 ---
 
 <Layout title={GLOBAL.author}>
