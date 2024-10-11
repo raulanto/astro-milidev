@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { PROJECTS } from "@consts";
+import ProjectCardButton from "@components/ProjectCardButton.astro";
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title={PROJECTS.title}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-10">
+        <div class="animate font-semibold text-black dark:text-white">
+          Projects
+        </div>
+        <ul class="animate not-prose flex flex-col gap-4">
+          {
+            projects.map((project) => (
+              <li>
+                <ProjectCardButton entry={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </aside>
+  </Container>
+</Layout>

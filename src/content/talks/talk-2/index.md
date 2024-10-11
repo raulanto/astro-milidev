@@ -1,8 +1,7 @@
 ---
-title: "Astro Nano"
-shortDescription: "Minimal portfolio and blog build with astro and no frameworks."
+title: "How to apply a theme"
 date: "2024-03-26"
-demoUrl: "https://astro-nano-demo.vercel.app"
+slidesUrl: "https://astro-nano-demo.vercel.app"
 repoUrl: "https://github.com/markhorn-dev/astro-nano"
 ---
 

@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ArrowCardButton from "./ArrowCardButton.astro";
+
+type Props = {
+  entry: CollectionEntry<"talks">;
+};
+
+const { entry } = Astro.props;
+---
+
+<ArrowCardButton
+  href={`/${entry.collection}/${entry.slug}`}
+  title={entry.data.title}
+/>

@@ -1,8 +1,7 @@
 ---
-title: "Astro Micro"
-shortDescription: "Astro Micro is an accessible and lightweight blog."
+title: "Change the world with Astro"
 date: "2024-05-26"
-demoUrl: "https://astro-micro.vercel.app"
+slidesUrl: "https://astro-micro.vercel.app"
 repoUrl: "https://github.com/trevortylerlee/astro-micro"
 ---
 

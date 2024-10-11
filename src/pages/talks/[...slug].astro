@@ -1,0 +1,67 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import Link from "@components/Link.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+
+export async function getStaticPaths() {
+  const talks = (await getCollection("talks"))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return talks.map((project) => ({
+    params: { slug: project.slug },
+    props: project,
+  }));
+}
+type Props = CollectionEntry<"talks">;
+
+const talk = Astro.props;
+const { Content, headings } = await talk.render();
+---
+
+<Layout title={talk.data.title}>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/projects">Back to projects</BackToPrevious>
+    </div>
+    <div class="animate my-10 space-y-1">
+      <div class="flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          <FormattedDate date={talk.data.date} />
+        </div>
+        &bull;
+        <div class="font-base text-sm">
+          {readingTime(talk.body)}
+        </div>
+      </div>
+      <h1 class="text-3xl font-semibold text-black dark:text-white">
+        {talk.data.title}
+      </h1>
+      {
+        (talk.data.slidesUrl || talk.data.repoUrl) && (
+          <nav class="flex gap-1">
+            {talk.data.slidesUrl && (
+              <Link href={talk.data.slidesUrl} external>
+                demo
+              </Link>
+            )}
+            {talk.data.slidesUrl && talk.data.repoUrl && <span>/</span>}
+            {talk.data.repoUrl && (
+              <Link href={talk.data.repoUrl} external>
+                repo
+              </Link>
+            )}
+          </nav>
+        )
+      }
+    </div>
+    <TableOfContents headings={headings} />
+    <article class="animate">
+      <Content />
+    </article>
+  </Container>
+</Layout>

@@ -2,8 +2,8 @@
 title: "Astro Sphere"
 shortDescription: "Portfolio and blog build with astro."
 date: "03/18/2024"
-demoURL: "https://astro-sphere-demo.vercel.app"
-repoURL: "https://github.com/markhorn-dev/astro-sphere"
+demoUrl: "https://astro-sphere-demo.vercel.app"
+repoUrl: "https://github.com/markhorn-dev/astro-sphere"
 ---
 
 ![Astro Sphere](/astro-sphere.jpg)
