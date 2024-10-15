@@ -1,0 +1,19 @@
+---
+import Link from "@components/Link.astro";
+
+type Props = {
+  small?: boolean;
+};
+
+const { small } = Astro.props;
+---
+
+<p style={small ? "font-size: 0.875rem" : ""}>
+  I'm a backend-oriented senior software engineer and solution architect,
+  experienced in wearing a leadership hat.
+</p>
+<p style={small ? "font-size: 0.875rem" : ""}>
+  If you need a dotnet/nodejs/azure/architecture specialist to come aboard and
+  my <Link href="/resume">resume</Link>
+  seems to be the match, <Link href="/contact">contact</Link> me regarding my availability.
+</p>

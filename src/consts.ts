@@ -68,7 +68,7 @@ export const GLOBAL: Site & {
 } = {
   title: "Astro Mili Dev",
   description: "An accessible and lightweight Astro theme for developers.",
-  author: "Bartosz Lenar",
+  author: "John Doe",
   email:
     CONTACT.find((c) => c.name === "Email")?.href.substring("mailto:".length) ||
     "",

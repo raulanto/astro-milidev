@@ -1,0 +1,31 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCardButton from "@components/ArrowCardButton.astro";
+
+import { CONTACT } from "@consts";
+---
+
+<Layout title="contact">
+  <Container>
+    <aside data-pagefind-ignore>
+      <h1 class="font-semibold text-black dark:text-white">Contact</h1>
+      <div class="my-4">
+        <p class="mb-1">My primary contact channel is LinkedIn</p>
+      </div>
+      {
+        CONTACT.map((contact) => (
+          <div class="my-4">
+            <section>
+              <ArrowCardButton
+                href={contact.href}
+                title={contact.name}
+                description={contact.displayName}
+              />
+            </section>
+          </div>
+        ))
+      }
+    </aside>
+  </Container>
+</Layout>

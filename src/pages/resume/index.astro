@@ -1,0 +1,25 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCardButton from "@components/ArrowCardButton.astro";
+---
+
+<Layout title="resume">
+  <Container>
+    <aside data-pagefind-ignore>
+      <h1 class="font-semibold text-black dark:text-white">Resume</h1>
+      <div class="my-4">
+        <p class="mb-1">The PDF resume:</p>
+        <section>
+          <ArrowCardButton href="/resume/resume.pdf" title="Download PDF" />
+        </section>
+      </div>
+      <div class="my-4">
+        <p class="mb-1">The DOCX resume:</p>
+        <section>
+          <ArrowCardButton href="/resume/resume.docx" title="Download DOCX" />
+        </section>
+      </div>
+    </aside>
+  </Container>
+</Layout>
