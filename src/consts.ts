@@ -65,6 +65,10 @@ export const GLOBAL: Site & {
   description: string;
   author: string;
   email: string;
+  logo?: {
+    darkThemeSrc?: string;
+    lightThemeSrc?: string;
+  };
 } = {
   title: "Astro Mili Dev",
   description: "An accessible and lightweight Astro theme for developers.",
@@ -72,4 +76,8 @@ export const GLOBAL: Site & {
   email:
     CONTACT.find((c) => c.name === "Email")?.href.substring("mailto:".length) ||
     "",
+  logo: {
+    darkThemeSrc: "/logo/logo_dark.png",
+    lightThemeSrc: "/logo/logo_light.png",
+  },
 };

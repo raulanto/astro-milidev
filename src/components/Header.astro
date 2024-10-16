@@ -8,9 +8,16 @@ import { GLOBAL } from "@consts";
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
       <Link href="/" underline={false}>
-        <div class="font-semibold">
-          {GLOBAL.title}
-        </div>
+        {
+          (GLOBAL.logo && (
+            <img
+              id="logo"
+              src={GLOBAL.logo.darkThemeSrc}
+              alt={GLOBAL.title}
+              style="max-width: 150px;"
+            />
+          )) || <div class="font-semibold">{GLOBAL.title}</div>
+        }
       </Link>
       <nav class="flex items-center gap-1 text-sm">
         <Link href="/contact">contact</Link>

@@ -21,6 +21,8 @@ import "@fontsource/geist-mono/700.css";
 import "@fontsource/geist-mono/800.css";
 import "@fontsource/geist-mono/900.css";
 
+import { GLOBAL } from "../consts";
+
 interface Props {
   title: string;
   description?: string;
@@ -68,6 +70,16 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <!-- PageFind -->
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
 <script is:inline src="/pagefind/pagefind-ui.js"></script>
+{
+  GLOBAL.logo && (
+    <div
+      id="logo-srcs"
+      style="display: none;"
+      data-dark-src={GLOBAL.logo.darkThemeSrc}
+      data-light-src={GLOBAL.logo.lightThemeSrc}
+    />
+  )
+}
 
 <ViewTransitions />
 
@@ -173,6 +185,27 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     });
   }
 
+  function getLogoSrc(darkTheme) {
+    const logoSrcs = document.getElementById("logo-srcs");
+    if (!logoSrcs) {
+      return undefined;
+    }
+
+    if (darkTheme) {
+      return (
+        logoSrcs.getAttribute("data-dark-src") ??
+        logoSrcs.getAttribute("data-light-src")
+      );
+    }
+
+    if (!darkTheme) {
+      return (
+        logoSrcs.getAttribute("data-light-src") ??
+        logoSrcs.getAttribute("data-dark-src")
+      );
+    }
+  }
+
   function toggleTheme(dark) {
     const css = document.createElement("style");
 
@@ -195,6 +228,13 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
+    }
+
+    const logoSrc = getLogoSrc(dark);
+    const logo = document.getElementById("logo");
+
+    if (logoSrc && logo) {
+      logo.src = logoSrc;
     }
 
     window.getComputedStyle(css).opacity;
