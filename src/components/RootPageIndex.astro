@@ -4,15 +4,15 @@ import Container from "@components/Container.astro";
 
 type Props = {
   title: string;
-  pagefindIgnore?: boolean;
+  searchable?: boolean;
 };
 
-const { title, pagefindIgnore } = Astro.props;
+const { title, searchable } = Astro.props;
 ---
 
 <Layout title={title}>
   <Container>
-    <aside {...pagefindIgnore ? { "data-pagefind-ignore": true } : {}}>
+    <aside {...!searchable ? { "data-pagefind-ignore": true } : {}}>
       <div class="space-y-10">
         <h1 class="animate font-semibold text-black dark:text-white">
           {title}
