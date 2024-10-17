@@ -1,30 +1,22 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
 import { TALKS } from "@consts";
 import { getFilteredCollectionEntries } from "@lib/utils";
-import TalkCardButton from "../../components/TalkCardButton.astro";
+import TalkCardButton from "@components/TalkCardButton.astro";
+import RootPageIndex from "@components/RootPageIndex.astro";
 
 const { entries } = await getFilteredCollectionEntries("talks");
 ---
 
-<Layout title={TALKS.title}>
-  <Container>
-    <aside data-pagefind-ignore>
-      <div class="space-y-10">
-        <div class="animate font-semibold text-black dark:text-white">
-          Talks
-        </div>
-        <ul class="animate not-prose flex flex-col gap-4">
-          {
-            entries.map((talk) => (
-              <li>
-                <TalkCardButton entry={talk} />
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </aside>
-  </Container>
-</Layout>
+<RootPageIndex title={TALKS.title}>
+  {
+    (
+      <ul class="animate not-prose flex flex-col gap-4">
+        {entries.map((project) => (
+          <li>
+            <TalkCardButton entry={project} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</RootPageIndex>

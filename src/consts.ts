@@ -5,7 +5,8 @@ type Site = {
 };
 
 type CollectionSite = Site & {
-  title: CollectionName;
+  collectionName: CollectionName;
+  title: string;
   pageSize?: number;
 };
 
@@ -21,17 +22,20 @@ export const HOME: Site & {
 };
 
 export const BLOG: CollectionSite = {
-  title: "blog",
+  title: "Blog",
+  collectionName: "blog",
   pageSize: 10,
 };
 
 export const PROJECTS: CollectionSite = {
-  title: "projects",
+  title: "Projects",
+  collectionName: "projects",
   pageSize: 10,
 };
 
 export const TALKS: CollectionSite = {
-  title: "talks",
+  title: "Talks",
+  collectionName: "talks",
   pageSize: 10,
 };
 
