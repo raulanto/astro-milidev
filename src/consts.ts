@@ -9,6 +9,11 @@ type CollectionSite = Site & {
   pageSize?: number;
 };
 
+type LicenseInfo = {
+  name: string;
+  href: string;
+};
+
 export const HOME: Site & {
   maxBlogItems?: number;
   maxProjectItems?: number;
@@ -20,9 +25,13 @@ export const HOME: Site & {
   maxTalkItems: 3,
 };
 
-export const BLOG: CollectionSite = {
+export const BLOG: CollectionSite & { license: LicenseInfo } = {
   title: "Blog",
   pageSize: 10,
+  license: {
+    name: "CC BY-NC-ND 4.0",
+    href: "https://creativecommons.org/licenses/by-nc-nd/4.0",
+  },
 };
 
 export const PROJECTS: CollectionSite = {
@@ -64,6 +73,7 @@ export const CONTACT: {
 export const GLOBAL: Site & {
   description: string;
   author: string;
+  authorPhotoSrc: string;
   email: string;
   logo?: {
     darkThemeSrc?: string;
@@ -73,6 +83,7 @@ export const GLOBAL: Site & {
   title: "Astro Mili Dev",
   description: "An accessible and lightweight Astro theme for developers.",
   author: "John Doe",
+  authorPhotoSrc: "/johndoe.png",
   email:
     CONTACT.find((c) => c.name === "Email")?.href.substring("mailto:".length) ||
     "",

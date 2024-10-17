@@ -1,0 +1,19 @@
+---
+import Bio from "./Bio.astro";
+import { GLOBAL } from "@consts";
+---
+
+<div class="start mt-4 flex items-center">
+  <img
+    src={GLOBAL.authorPhotoSrc}
+    alt={GLOBAL.author}
+    class="mr-8 h-24 w-24 rounded-full"
+  />
+
+  <div class="flex-grow">
+    <p>
+      <strong>Hi, I'm {GLOBAL.author}</strong>
+    </p>
+    <Bio small />
+  </div>
+</div>

@@ -8,6 +8,7 @@ import TalkCardButton from "@components/TalkCardButton.astro";
 import Link from "@components/Link.astro";
 import type { CollectionEntry } from "astro:content";
 import { getFilteredCollectionEntries } from "@lib/utils";
+import Bio from "../components/Bio.astro";
 
 async function getCollectionEntries<T extends CollectionName>(
   collectionName: T,
@@ -36,7 +37,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
     <aside data-pagefind-ignore>
       <div class="animate flex items-center justify-center">
         <img
-          src="/myphoto.png"
+          src={GLOBAL.authorPhotoSrc}
           alt={GLOBAL.author}
           class="h-48 w-48 rounded-full"
         />
@@ -47,40 +48,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
       <div class="space-y-16">
         <section>
           <article class="animate space-y-4">
-            <span>
-              <p>
-                Astro Mili Dev is an accessible theme for <Link
-                  href="https://astro.build/">Astro</Link
-                >. It's a fork of <Link href="https://github.com/trevortylerlee"
-                  >Trevor Lee's</Link
-                > popular theme
-                <Link href="https://astro.build/themes/details/astro-micro/"
-                  >Astro Micro</Link
-                >, which is a fork of
-                <Link href="https://github.com/markhorn-dev">
-                  Mark Horn's
-                </Link>
-                <Link href="https://astro.build/themes/details/astronano/"
-                  >Astro Nano</Link
-                >. Like Nano and Micro, Mili Dev comes with zero frameworks
-                installed. The name "Mili Dev" refers to the next SI prefix
-                after "micro" and "nano", and "dev", because it's mostly
-                tailored for developers.
-              </p>
-              <p>
-                Astro Mili Dev is mostly refactor and code cleanup (e.g., all
-                collections are resolved in a single place and then reused).
-              </p>
-            </span>
-            <span class="animate">
-              <p>
-                Visit
-                <Link href="https://github.com/bartoszlenar/astro-mili-dev">
-                  Astro Mili Dev on GitHub
-                </Link>
-                to fork the repository to get started.
-              </p>
-            </span>
+            <Bio />
           </article>
         </section>
 

@@ -8,12 +8,21 @@ type Props = {
 const { small } = Astro.props;
 ---
 
-<p style={small ? "font-size: 0.875rem" : ""}>
-  I'm a backend-oriented senior software engineer and solution architect,
-  experienced in wearing a leadership hat.
-</p>
-<p style={small ? "font-size: 0.875rem" : ""}>
-  If you need a dotnet/nodejs/azure/architecture specialist to come aboard and
-  my <Link href="/resume">resume</Link>
-  seems to be the match, <Link href="/contact">contact</Link> me regarding my availability.
-</p>
+<div style={small ? "font-size: 0.875rem" : ""}>
+  <p>
+    Essentially, it's the <Link href="https://astro-micro.vercel.app/"
+      >Astro Micro</Link
+    > theme by
+    <Link href="https://github.com/trevortylerlee">Trevor Lee</Link>, but with a
+    few tweaks here and there.
+  </p>
+  <p>
+    It's a base theme for my own blog that I released as a standalone Astro
+    theme just to prove that even a backend engineer like myself can jump in the
+    frontend world if needed and deliver a lot of value within a single day of
+    work.
+  </p>
+  <p>
+    All of the changes are briefly listed <Link href="/blog/mili-dev-changelog">in this post</Link>.
+  </p>
+</div>
