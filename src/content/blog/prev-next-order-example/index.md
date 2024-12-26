@@ -1,5 +1,5 @@
 ---
-title: "Chronological pagination example"
+title: "Chronological pagination example with a long text after the first initial sentence is written"
 date: "2024-03-21"
 draft: false
 ---

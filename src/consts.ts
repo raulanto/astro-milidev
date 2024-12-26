@@ -6,7 +6,7 @@ type Site = {
 
 type CollectionSite = Site & {
   title: string;
-  pageSize?: number;
+  pageSize: number;
 };
 
 type LicenseInfo = {
@@ -27,7 +27,7 @@ export const HOME: Site & {
 
 export const BLOG: CollectionSite & { license: LicenseInfo } = {
   title: "Blog",
-  pageSize: 10,
+  pageSize: 3,
   license: {
     name: "CC BY-NC-ND 4.0",
     href: "https://creativecommons.org/licenses/by-nc-nd/4.0",
