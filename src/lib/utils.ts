@@ -19,21 +19,9 @@ export function readingTime(html: string) {
 }
 
 export async function getFilteredCollectionEntries<T extends CollectionName>(
-  collectionName: T,
-  pagination?: {
-    page: number;
-    pageSize: number;
-  },
+  collectionName: T
 ): Promise<{
   entries: CollectionEntry<T>[];
-  pagination?: {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    totalCount: number;
-    nextPage?: number;
-    prevPage?: number;
-  };
 }> {
   const data = (await getCollection(collectionName))
     .filter((post) => !post.data.draft)
@@ -44,28 +32,6 @@ export async function getFilteredCollectionEntries<T extends CollectionName>(
     );
 
   const totalCount = data.length;
-
-  if (pagination) {
-    const { page, pageSize } = pagination;
-    const start = (page - 1) * pageSize;
-    const end = start + pageSize;
-    const paginatedEntries = data.slice(start, end);
-    const pageCount = Math.ceil(totalCount / pageSize);
-    const nextPage = page < pageCount ? page + 1 : undefined;
-    const prevPage = page > 1 ? page - 1 : undefined;
-
-    return {
-      entries: paginatedEntries,
-      pagination: {
-        page,
-        pageSize,
-        pageCount,
-        totalCount,
-        nextPage,
-        prevPage,
-      },
-    };
-  }
 
   return { entries: data };
 }

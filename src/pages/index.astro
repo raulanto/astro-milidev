@@ -14,12 +14,9 @@ async function getCollectionEntries<T extends CollectionName>(
   collectionName: T,
   maxItems: number,
 ): Promise<CollectionEntry<T>[]> {
-  const { entries } = await getFilteredCollectionEntries(collectionName, {
-    page: 1,
-    pageSize: maxItems,
-  });
+  const { entries } = await getFilteredCollectionEntries(collectionName);
 
-  return entries;
+  return entries.slice(0, maxItems);
 }
 
 const blog = await getCollectionEntries("blog", HOME.maxBlogItems ?? 0);
