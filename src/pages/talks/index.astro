@@ -13,7 +13,7 @@ const { entries } = await getFilteredCollectionEntries("talks");
       <ul class="animate not-prose flex flex-col gap-4">
         {entries.map((project) => (
           <li>
-            <TalkCardButton entry={project} />
+            <TalkCardButton entry={project} showDate />
           </li>
         ))}
       </ul>
