@@ -9,13 +9,16 @@ type Props = {
 
 const { entry, showDate } = Astro.props;
 
-const dateString = showDate
-  ? entry.data.date.toISOString().substring(0, 10)
+const description = showDate
+  ? entry.data.date.toISOString().substring(0, 10) +
+    (entry.data.lastUpdateDate
+      ? ` (updated: ${entry.data.lastUpdateDate.toISOString().substring(0, 10)})`
+      : "")
   : undefined;
 ---
 
 <ArrowCardButton
   href={`/${entry.collection}/${entry.slug}`}
   title={entry.data.title}
-  description={dateString}
+  description={description}
 />
