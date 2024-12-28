@@ -6,6 +6,7 @@ import { getFilteredCollectionEntries, readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
 import TableOfContents from "@components/TableOfContents.astro";
+import ArrowCardButton from "@components/ArrowCardButton.astro";
 
 export async function getStaticPaths() {
   const { entries } = await getFilteredCollectionEntries("talks");
@@ -39,19 +40,21 @@ const { Content, headings } = await talk.render();
       </h1>
       {
         (talk.data.slidesUrl || talk.data.repoUrl) && (
-          <nav class="flex gap-1">
+          <section class="space-y-2">
+            <div class="mt-4 mb-2">Resources: </div>
             {talk.data.slidesUrl && (
-              <Link href={talk.data.slidesUrl} external>
-                demo
-              </Link>
+              <ArrowCardButton
+                href={talk.data.slidesUrl}
+                title="Presentation slides"
+              />
             )}
-            {talk.data.slidesUrl && talk.data.repoUrl && <span>/</span>}
             {talk.data.repoUrl && (
-              <Link href={talk.data.repoUrl} external>
-                repo
-              </Link>
+              <ArrowCardButton
+                href={talk.data.repoUrl}
+                title="Repository with examples"
+              />
             )}
-          </nav>
+          </section>
         )
       }
     </div>

@@ -6,6 +6,7 @@ import { getFilteredCollectionEntries, readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
 import TableOfContents from "@components/TableOfContents.astro";
+import ArrowCardButton from "@components/ArrowCardButton.astro";
 
 export async function getStaticPaths() {
   const { entries } = await getFilteredCollectionEntries("projects");
@@ -39,19 +40,18 @@ const { Content, headings } = await project.render();
       </h1>
       {
         (project.data.demoUrl || project.data.repoUrl) && (
-          <nav class="flex gap-1">
+          <section class="space-y-2">
+            <div class="mb-2 mt-4">Resources: </div>
             {project.data.demoUrl && (
-              <Link href={project.data.demoUrl} external>
-                demo
-              </Link>
+              <ArrowCardButton href={project.data.demoUrl} title="Demo" />
             )}
-            {project.data.demoUrl && project.data.repoUrl && <span>/</span>}
             {project.data.repoUrl && (
-              <Link href={project.data.repoUrl} external>
-                repo
-              </Link>
+              <ArrowCardButton
+                href={project.data.repoUrl}
+                title="Code repository"
+              />
             )}
-          </nav>
+          </section>
         )
       }
     </div>
