@@ -36,14 +36,6 @@ const entries = page.data.map((pageEntry) => ({
       </ul>
     )
   }
-  {
-    page.lastPage !== 1 && (
-      <section class="animate text-center">
-        <div class="mb-4">
-          this is page {page.currentPage} of {page.lastPage}
-        </div>
-        <PageNavigation paging={page} />
-      </section>
-    )
-  }
+
+  <PageNavigation page={page} />
 </RootPageIndex>
