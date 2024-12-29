@@ -1,8 +1,6 @@
 ---
 title: "How to apply a theme"
 date: "2024-03-26"
-slidesUrl: "https://astro-nano-demo.vercel.app"
-repoUrl: "https://github.com/markhorn-dev/astro-nano"
 ---
 
 ![Astro Nano](/astro-nano.png)

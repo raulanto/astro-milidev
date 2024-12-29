@@ -41,8 +41,6 @@ draft: false;
 | description | Yes | string  | Description of the content. Used in SEO and RSS. |
 | date        | Yes | string  | Must be a valid date string (able to be parsed). |
 | draft       | No  | boolean | If draft: true, content will not be published.   |
-| demoURL     | No  | string  | Link to live project demo, if available.         |
-| repoURL     | No  | string  | Link to project repo, if available.              |
 
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "Change the world with Astro"
 date: "2024-05-26"
-slidesUrl: "https://astro-micro.vercel.app"
-repoUrl: "https://github.com/trevortylerlee/astro-micro"
 ---
 
 ![Astro Micro](/astro-micro.jpg)

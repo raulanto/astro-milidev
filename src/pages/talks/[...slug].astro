@@ -38,25 +38,6 @@ const { Content, headings } = await talk.render();
       <h1 class="text-3xl font-semibold text-black dark:text-white">
         {talk.data.title}
       </h1>
-      {
-        (talk.data.slidesUrl || talk.data.repoUrl) && (
-          <section class="space-y-2">
-            <div class="mt-4 mb-2">Resources: </div>
-            {talk.data.slidesUrl && (
-              <ArrowCardButton
-                href={talk.data.slidesUrl}
-                title="Presentation slides"
-              />
-            )}
-            {talk.data.repoUrl && (
-              <ArrowCardButton
-                href={talk.data.repoUrl}
-                title="Repository with examples"
-              />
-            )}
-          </section>
-        )
-      }
     </div>
     <TableOfContents headings={headings} />
     <article class="animate">

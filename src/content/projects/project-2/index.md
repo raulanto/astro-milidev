@@ -2,8 +2,6 @@
 title: "Astro Nano"
 shortDescription: "Minimal portfolio and blog build with astro and no frameworks."
 date: "2024-03-26"
-demoUrl: "https://astro-nano-demo.vercel.app"
-repoUrl: "https://github.com/markhorn-dev/astro-nano"
 ---
 
 ![Astro Nano](/astro-nano.png)

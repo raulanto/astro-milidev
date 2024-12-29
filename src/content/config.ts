@@ -18,8 +18,6 @@ const projects = defineCollection({
     lastUpdateDate: z.coerce.date().optional(),
     draft: z.boolean().optional(),
     shortDescription: z.string(),
-    demoUrl: z.string().optional(),
-    repoUrl: z.string().optional(),
   }),
 });
 
@@ -30,8 +28,6 @@ const talks = defineCollection({
     date: z.coerce.date(),
     lastUpdateDate: z.coerce.date().optional(),
     draft: z.boolean().optional(),
-    slidesUrl: z.string().optional(),
-    repoUrl: z.string().optional(),
   }),
 });
 

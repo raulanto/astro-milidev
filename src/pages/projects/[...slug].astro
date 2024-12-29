@@ -38,22 +38,6 @@ const { Content, headings } = await project.render();
       <h1 class="text-3xl font-semibold text-black dark:text-white">
         {project.data.title}
       </h1>
-      {
-        (project.data.demoUrl || project.data.repoUrl) && (
-          <section class="space-y-2">
-            <div class="mb-2 mt-4">Resources: </div>
-            {project.data.demoUrl && (
-              <ArrowCardButton href={project.data.demoUrl} title="Demo" />
-            )}
-            {project.data.repoUrl && (
-              <ArrowCardButton
-                href={project.data.repoUrl}
-                title="Code repository"
-              />
-            )}
-          </section>
-        )
-      }
     </div>
     <TableOfContents headings={headings} />
     <article class="animate">

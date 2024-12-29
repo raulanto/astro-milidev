@@ -1,8 +1,6 @@
 ---
 title: "How to setup Astro"
 date: "03/18/2024"
-slidesUrl: "https://astro-sphere-demo.vercel.app"
-repoUrl: "https://github.com/markhorn-dev/astro-sphere"
 ---
 
 ![Astro Sphere](/astro-sphere.jpg)
