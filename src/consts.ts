@@ -27,7 +27,7 @@ export const HOME: Site & {
 
 export const BLOG: CollectionSite & { license: LicenseInfo } = {
   title: "Blog",
-  pageSize: 3,
+  pageSize: 10,
   license: {
     name: "CC BY-NC-ND 4.0",
     href: "https://creativecommons.org/licenses/by-nc-nd/4.0",
