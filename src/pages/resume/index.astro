@@ -1,6 +1,10 @@
 ---
 import ArrowCardButton from "@components/ArrowCardButton.astro";
 import RootPageIndex from "@components/RootPageIndex.astro";
+
+import { CONTACT } from "@consts";
+
+const linkedInContact = CONTACT.find((contact) => contact.name === "LinkedIn");
 ---
 
 <RootPageIndex title="Resume">
@@ -16,4 +20,19 @@ import RootPageIndex from "@components/RootPageIndex.astro";
       <ArrowCardButton href="/resume/resume.docx" title="Download DOCX" />
     </section>
   </div>
+
+  {
+    linkedInContact && (
+      <div class="animate mb-4">
+        <p class="mb-1">Or you can check my LinkedIn profile:</p>
+        <section>
+          <ArrowCardButton
+            href={linkedInContact.href}
+            title="Navigate to LinkedIn"
+            openInNewTab
+          />
+        </section>
+      </div>
+    )
+  }
 </RootPageIndex>
