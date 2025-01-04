@@ -17,10 +17,10 @@ Visit [Astro Micro on Github](https://github.com/trevortylerlee/astro-micro) to 
 
 <div class="flex gap-2">
   <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/trevortylerlee/astro-micro">
-    <img src="/deploy_vercel.svg" />
+    <img src="deploy_vercel.svg" />
   </a>
   <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/trevortylerlee/astro-micro">
-    <img src="/deploy_netlify.svg" />
+    <img src="deploy_netlify.svg" />
   </a>
 </div>
 
