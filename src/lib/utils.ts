@@ -31,8 +31,6 @@ export async function getFilteredCollectionEntries<T extends CollectionName>(
         (a.data.lastUpdateDate ?? a.data.date).getTime(),
     );
 
-  const totalCount = data.length;
-
   return { entries: data };
 }
 
