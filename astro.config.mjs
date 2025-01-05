@@ -7,7 +7,7 @@ import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bartoszlenar.gitlab.io",
+  site: "https://bartoszlenar.github.io",
   base: "/astro-mili-dev/",
   integrations: [tailwind(), sitemap(), mdx(), pagefind()],
   markdown: {
