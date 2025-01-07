@@ -2,7 +2,11 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { getFilteredCollectionEntries, readingTime } from "@lib/utils";
+import {
+  getFilteredCollectionEntries,
+  readingTime,
+  resolvePath,
+} from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 
@@ -21,7 +25,9 @@ const { Content, headings } = await project.render();
 <Layout title={project.data.title}>
   <Container>
     <div class="animate">
-      <BackToPrevious href="projects">Back to projects</BackToPrevious>
+      <BackToPrevious href={resolvePath("/projects", Astro.url.pathname)}
+        >Back to projects</BackToPrevious
+      >
     </div>
     <div class="animate my-10 space-y-1">
       <div class="flex items-center gap-1.5">

@@ -4,7 +4,11 @@ import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import Layout from "@layouts/Layout.astro";
-import { getFilteredCollectionEntries, readingTime } from "@lib/utils";
+import {
+  getFilteredCollectionEntries,
+  readingTime,
+  resolvePath,
+} from "@lib/utils";
 
 export async function getStaticPaths() {
   const { entries } = await getFilteredCollectionEntries("talks");
@@ -21,7 +25,9 @@ const { Content, headings } = await talk.render();
 <Layout title={talk.data.title}>
   <Container>
     <div class="animate">
-      <BackToPrevious href="talks">Back to talks</BackToPrevious>
+      <BackToPrevious href={resolvePath("/talks", Astro.url.pathname)}
+        >Back to talks</BackToPrevious
+      >
     </div>
     <div class="animate my-10 space-y-1">
       <div class="flex items-center gap-1.5">

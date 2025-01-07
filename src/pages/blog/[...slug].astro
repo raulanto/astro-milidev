@@ -6,6 +6,7 @@ import {
   readingTime,
   getNavigationEntries,
   getFilteredCollectionEntries,
+  resolvePath,
 } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import PostNavigation from "@components/PostNavigation.astro";
@@ -33,7 +34,9 @@ const { Content, headings } = await post.render();
 <Layout title={post.data.title}>
   <Container>
     <div class="animate">
-      <BackToPrevious href="blog">Back to blog</BackToPrevious>
+      <BackToPrevious href={resolvePath("/blog", Astro.url.pathname)}
+        >Back to blog posts</BackToPrevious
+      >
     </div>
     <div class="my-10 space-y-1">
       <div class="animate flex items-center gap-1.5">
