@@ -1,0 +1,10 @@
+---
+interface Props extends astroHTML.JSX.ImgHTMLAttributes {}
+
+const { src, ...rest } = Astro.props;
+const imagePath = src?.startsWith("/")
+    ? import.meta.env.BASE_URL + src.slice(1)
+    : import.meta.env.BASE_URL + src;
+---
+
+<img src={imagePath} {...rest} />
