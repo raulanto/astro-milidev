@@ -5,7 +5,7 @@ import { HOME, GLOBAL, type CollectionName } from "@consts";
 import BlogCardButton from "@components/BlogCardButton.astro";
 import ProjectCardButton from "@components/ProjectCardButton.astro";
 import TalkCardButton from "@components/TalkCardButton.astro";
-import Link from "@components/Link.astro";
+import TextLink from "@components/TextLink.astro";
 import type { CollectionEntry } from "astro:content";
 import { getFilteredCollectionEntries } from "@lib/utils";
 import Bio from "../components/Bio.astro";
@@ -54,7 +54,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
             <h2 class="font-semibold text-black dark:text-white">
               Latest blog posts
             </h2>
-            <Link href="blog"> See all blog posts </Link>
+            <TextLink href="blog"> See all blog posts </TextLink>
           </div>
           <ul class="not-prose flex flex-col gap-4">
             {
@@ -72,7 +72,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
             <h2 class="font-semibold text-black dark:text-white">
               Recent talks
             </h2>
-            <Link href="talks"> See all talks </Link>
+            <TextLink href="talks"> See all talks </TextLink>
           </div>
           <ul class="not-prose flex flex-col gap-4">
             {
@@ -90,7 +90,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
             <h2 class="font-semibold text-black dark:text-white">
               Recent projects
             </h2>
-            <Link href="projects"> See all projects </Link>
+            <TextLink href="projects"> See all projects </TextLink>
           </div>
           <ul class="not-prose flex flex-col gap-4">
             {

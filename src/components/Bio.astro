@@ -1,5 +1,5 @@
 ---
-import Link from "@components/Link.astro";
+import TextLink from "@components/TextLink.astro";
 
 type Props = {
   small?: boolean;
@@ -10,11 +10,11 @@ const { small } = Astro.props;
 
 <div style={small ? "font-size: 0.875rem" : ""}>
   <p>
-    Essentially, it's the <Link href="https://astro-micro.vercel.app/"
-      >Astro Micro</Link
+    Essentially, it's the <TextLink href="https://astro-micro.vercel.app/"
+      >Astro Micro</TextLink
     > theme by
-    <Link href="https://github.com/trevortylerlee">Trevor Lee</Link>, but with a
-    few tweaks here and there.
+    <TextLink href="https://github.com/trevortylerlee">Trevor Lee</TextLink>,
+    but with a few tweaks here and there.
   </p>
   <p>
     It's a base theme for my own blog that I released as a standalone Astro
@@ -23,6 +23,8 @@ const { small } = Astro.props;
     work.
   </p>
   <p>
-    All of the changes are briefly listed <Link href="blog/mili-dev-changelog">in this post</Link>.
+    All of the changes are briefly listed <TextLink
+      href="blog/mili-dev-changelog">in this post</TextLink
+    >.
   </p>
 </div>

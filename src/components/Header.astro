@@ -1,13 +1,13 @@
 ---
 import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
+import TextLink from "@components/TextLink.astro";
 import { GLOBAL } from "@consts";
 ---
 
 <header transition:persist>
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
-      <Link href="" underline={false}>
+      <TextLink href="" underline={false}>
         {
           (GLOBAL.logo && (
             <img
@@ -18,25 +18,25 @@ import { GLOBAL } from "@consts";
             />
           )) || <div class="font-semibold">{GLOBAL.title}</div>
         }
-      </Link>
+      </TextLink>
       <nav class="flex items-center gap-1 text-sm">
-        <Link href="contact">contact</Link>
+        <TextLink href="contact">contact</TextLink>
         <span>
           {`|`}
         </span>
-        <Link href="resume">resume</Link>
+        <TextLink href="resume">resume</TextLink>
         <span>
           {`|`}
         </span>
-        <Link href="blog">blog</Link>
-        <span>
-        {`|`}
-        </span>
-        <Link href="talks">talks</Link>
+        <TextLink href="blog">blog</TextLink>
         <span>
           {`|`}
         </span>
-        <Link href="projects">projects</Link>
+        <TextLink href="talks">talks</TextLink>
+        <span>
+          {`|`}
+        </span>
+        <TextLink href="projects">projects</TextLink>
         <span>
           {`|`}
         </span>
