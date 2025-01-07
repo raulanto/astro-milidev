@@ -49,26 +49,26 @@ export const CONTACT: {
   href: string;
   displayName?: string;
 }[] = [
-  {
-    name: "Email",
-    href: "mailto:email@example.com",
-    displayName: "email@example.com",
-  },
-  {
-    name: "X",
-    href: "https://x.com/BillGates",
-    displayName: "@BillGates",
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/dotnet",
-    displayName: "dotnet",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/williamhgates/",
-  },
-];
+    {
+      name: "Email",
+      href: "mailto:email@example.com",
+      displayName: "email@example.com",
+    },
+    {
+      name: "X",
+      href: "https://x.com/BillGates",
+      displayName: "@BillGates",
+    },
+    {
+      name: "GitHub",
+      href: "https://github.com/dotnet",
+      displayName: "dotnet",
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/williamhgates/",
+    },
+  ];
 
 export const GLOBAL: Site & {
   description: string;
@@ -90,5 +90,5 @@ export const GLOBAL: Site & {
   logo: {
     darkThemeSrc: "/logo/logo_dark.png",
     lightThemeSrc: "/logo/logo_light.png",
-  },
+  }
 };

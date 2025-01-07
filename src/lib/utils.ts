@@ -18,17 +18,25 @@ export function readingTime(html: string) {
   return `${readingTimeMinutes} min read`;
 }
 
+export function sortByLastUpdateDate<T extends CollectionName>(
+  a: CollectionEntry<T>,
+  b: CollectionEntry<T>,
+) {
+  return (
+    (b.data.lastUpdateDate ?? b.data.date).getTime() -
+    (a.data.lastUpdateDate ?? a.data.date).getTime()
+  );
+}
+
 export async function getFilteredCollectionEntries<T extends CollectionName>(
   collectionName: T
 ): Promise<{
   entries: CollectionEntry<T>[];
 }> {
   const data = (await getCollection(collectionName))
-    .filter((post) => !post.data.draft)
+    .filter((post: CollectionEntry<T>) => !post.data.draft)
     .sort(
-      (a, b) =>
-        (b.data.lastUpdateDate ?? b.data.date).getTime() -
-        (a.data.lastUpdateDate ?? a.data.date).getTime(),
+      sortByLastUpdateDate
     );
 
   return { entries: data };
