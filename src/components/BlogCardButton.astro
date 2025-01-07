@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import ArrowCardButton from "./ArrowCardButton.astro";
+import { resolvePath } from "@lib/utils";
 
 type Props = {
   entry: CollectionEntry<"blog">;
@@ -18,7 +19,7 @@ const description = showDate
 ---
 
 <ArrowCardButton
-  href={`${entry.collection}/${entry.slug}`}
+  href={resolvePath(`/${entry.collection}/${entry.slug}`, Astro.url.pathname)}
   title={entry.data.title}
   description={description}
 />

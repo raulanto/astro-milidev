@@ -1,0 +1,14 @@
+---
+import { resolvePath } from "@lib/utils";
+
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+    href: string;
+    base?: string;
+}
+
+const { href, base, ...rest } = Astro.props;
+---
+
+<a href={resolvePath(href, base)} {...rest}>
+    <slot />
+</a>

@@ -52,3 +52,27 @@ export async function getNavigationEntries<T extends CollectionName>(
     prevPost: entries[currentIndex - 1],
   };
 }
+
+export function resolvePath(href: string | undefined | null, currentPath?: string | undefined) {
+  if (!href) {
+    return "";
+  }
+
+  if (href.startsWith("http")) {
+    return href;
+  }
+
+  const baseUrl = import.meta.env.BASE_URL;
+
+  if (!baseUrl) {
+    return href;
+  }
+
+  const base = baseUrl.replace(/\/$/, "");
+
+  const resolvedPath = href.startsWith("/")
+    ? base + href
+    : base + "/" + currentPath + "/" + href;
+
+  return resolvedPath;
+}

@@ -1,18 +1,19 @@
 ---
 import Container from "@components/Container.astro";
 import TextLink from "@components/TextLink.astro";
+import { resolvePath } from "@lib/utils";
 import { GLOBAL } from "@consts";
 ---
 
 <header transition:persist>
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
-      <TextLink href="" underline={false}>
+      <TextLink href={resolvePath("/")} underline={false}>
         {
           (GLOBAL.logo && (
             <img
               id="logo"
-              src={GLOBAL.logo.darkThemeSrc}
+              src={resolvePath(GLOBAL.logo.darkThemeSrc, Astro.url.pathname)}
               alt={GLOBAL.title}
               style="max-width: 150px;"
             />
@@ -20,23 +21,32 @@ import { GLOBAL } from "@consts";
         }
       </TextLink>
       <nav class="flex items-center gap-1 text-sm">
-        <TextLink href="contact">contact</TextLink>
+        <TextLink href={resolvePath("/contact", Astro.url.pathname)}
+          >contact</TextLink
+        >
         <span>
           {`|`}
         </span>
-        <TextLink href="resume">resume</TextLink>
+        <TextLink href={resolvePath("/resume", Astro.url.pathname)}
+          >resume</TextLink
+        >
         <span>
           {`|`}
         </span>
-        <TextLink href="blog">blog</TextLink>
+        <TextLink href={resolvePath("/blog", Astro.url.pathname)}>blog</TextLink
+        >
         <span>
           {`|`}
         </span>
-        <TextLink href="talks">talks</TextLink>
+        <TextLink href={resolvePath("/talks", Astro.url.pathname)}
+          >talks</TextLink
+        >
         <span>
           {`|`}
         </span>
-        <TextLink href="projects">projects</TextLink>
+        <TextLink href={resolvePath("/projects", Astro.url.pathname)}
+          >projects</TextLink
+        >
         <span>
           {`|`}
         </span>

@@ -7,7 +7,7 @@ import ProjectCardButton from "@components/ProjectCardButton.astro";
 import TalkCardButton from "@components/TalkCardButton.astro";
 import TextLink from "@components/TextLink.astro";
 import type { CollectionEntry } from "astro:content";
-import { getFilteredCollectionEntries } from "@lib/utils";
+import { getFilteredCollectionEntries, resolvePath } from "@lib/utils";
 import Bio from "../components/Bio.astro";
 
 async function getCollectionEntries<T extends CollectionName>(
@@ -34,7 +34,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
     <aside data-pagefind-ignore>
       <div class="animate flex items-center justify-center">
         <img
-          src={GLOBAL.authorPhotoSrc}
+          src={resolvePath(GLOBAL.authorPhotoSrc, Astro.url.pathname)}
           alt={GLOBAL.author}
           class="h-48 w-48 rounded-full"
         />

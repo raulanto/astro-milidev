@@ -1,11 +1,12 @@
 ---
+import { resolvePath } from "@lib/utils";
 import Bio from "./Bio.astro";
 import { GLOBAL } from "@consts";
 ---
 
 <div class="start mt-4 flex items-center">
   <img
-    src={GLOBAL.authorPhotoSrc}
+    src={resolvePath(GLOBAL.authorPhotoSrc, Astro.url.pathname)}
     alt={GLOBAL.author}
     class="mr-8 h-24 w-24 rounded-full"
   />

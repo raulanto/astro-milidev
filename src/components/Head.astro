@@ -21,6 +21,7 @@ import "@fontsource/geist-mono/800.css";
 import "@fontsource/geist-mono/900.css";
 
 import { GLOBAL } from "../consts";
+import { resolvePath } from "@lib/utils";
 
 interface Props {
   title: string;
@@ -74,8 +75,11 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     <div
       id="logo-srcs"
       style="display: none;"
-      data-dark-src={GLOBAL.logo.darkThemeSrc}
-      data-light-src={GLOBAL.logo.lightThemeSrc}
+      data-dark-src={resolvePath(GLOBAL.logo.darkThemeSrc, Astro.url.pathname)}
+      data-light-src={resolvePath(
+        GLOBAL.logo.lightThemeSrc,
+        Astro.url.pathname,
+      )}
     />
   )
 }

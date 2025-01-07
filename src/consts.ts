@@ -83,12 +83,12 @@ export const GLOBAL: Site & {
   title: "Astro Mili Dev",
   description: "An accessible and lightweight Astro theme for developers.",
   author: "John Doe",
-  authorPhotoSrc: "johndoe.png",
+  authorPhotoSrc: "/johndoe.png",
   email:
     CONTACT.find((c) => c.name === "Email")?.href.substring("mailto:".length) ||
     "",
   logo: {
-    darkThemeSrc: "logo/logo_dark.png",
-    lightThemeSrc: "logo/logo_light.png",
+    darkThemeSrc: "/logo/logo_dark.png",
+    lightThemeSrc: "/logo/logo_light.png",
   },
 };
