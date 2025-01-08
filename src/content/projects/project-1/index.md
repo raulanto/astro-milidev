@@ -1,6 +1,6 @@
 ---
 title: "Astro Sphere"
-shortDescription: "Portfolio and blog build with astro."
+description: "Portfolio and blog build with astro."
 date: "03/18/2024"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Astro Nano"
-shortDescription: "Minimal portfolio and blog build with astro and no frameworks."
+description: "Minimal portfolio and blog build with astro and no frameworks."
 date: "2024-03-26"
 ---
 

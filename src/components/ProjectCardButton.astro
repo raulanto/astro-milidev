@@ -13,5 +13,5 @@ const { entry } = Astro.props;
 <ArrowCardButton
   href={resolvePath(`/${entry.collection}/${entry.slug}`, Astro.url.pathname)}
   title={entry.data.title}
-  description={entry.data.shortDescription}
+  description={entry.data.description}
 />

@@ -1,6 +1,6 @@
 ---
 title: "Astro Micro"
-shortDescription: "Astro Micro is an accessible and lightweight blog."
+description: "Astro Micro is an accessible and lightweight blog."
 date: "2024-05-26"
 ---
 
