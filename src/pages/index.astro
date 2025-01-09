@@ -60,7 +60,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
             {
               blog.map((post) => (
                 <li>
-                  <BlogCardButton entry={post} showDate />
+                  <BlogCardButton entry={post} />
                 </li>
               ))
             }
@@ -78,7 +78,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
             {
               talks.map((talk) => (
                 <li>
-                  <TalkCardButton entry={talk} showDate />
+                  <TalkCardButton entry={talk} />
                 </li>
               ))
             }
