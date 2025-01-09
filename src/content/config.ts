@@ -7,7 +7,7 @@ const blog = defineCollection({
     date: z.coerce.date(),
     lastUpdateDate: z.coerce.date().optional(),
     description: z.string().optional(),
-    socialImage: z.string().optional(),
+    ogImage: z.string().optional(),
     draft: z.boolean().optional(),
   }),
 });
@@ -19,7 +19,7 @@ const projects = defineCollection({
     date: z.coerce.date(),
     lastUpdateDate: z.coerce.date().optional(),
     description: z.string().optional(),
-    socialImage: z.string().optional(),
+    ogImage: z.string().optional(),
     draft: z.boolean().optional(),
   }),
 });
@@ -31,7 +31,7 @@ const talks = defineCollection({
     date: z.coerce.date(),
     lastUpdateDate: z.coerce.date().optional(),
     description: z.string().optional(),
-    socialImage: z.string().optional(),
+    ogImage: z.string().optional(),
     draft: z.boolean().optional(),
   }),
 });

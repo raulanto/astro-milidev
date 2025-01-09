@@ -19,7 +19,7 @@ export const HOME: Site & {
   maxProjectItems?: number;
   maxTalkItems?: number;
 } = {
-  title: "Astro Mili Dev",
+  title: "Astro Milidev",
   maxBlogItems: 5,
   maxProjectItems: 3,
   maxTalkItems: 3,
@@ -80,7 +80,7 @@ export const GLOBAL: Site & {
     lightThemeSrc?: string;
   };
 } = {
-  title: "Astro Mili Dev",
+  title: "Astro Milidev",
   description: "An accessible and lightweight Astro theme for developers.",
   author: "John Doe",
   authorPhotoSrc: "/johndoe.png",

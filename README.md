@@ -1,3 +1,3 @@
-# Introducing Astro Mili Dev
+# Introducing Astro Milidev
 
 (readme to be done later)
