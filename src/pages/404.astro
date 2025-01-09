@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
+import { resolvePath } from "@lib/utils";
 ---
 
 <Layout title="404">
@@ -11,7 +12,7 @@ import BackToPrevious from "@components/BackToPrevious.astro";
         404: Page not found
       </h4>
       <span class="animate">
-        <BackToPrevious href={import.meta.env.BASE_URL}>Go to home page</BackToPrevious>
+        <BackToPrevious href={resolvePath("/")}>Go to home page</BackToPrevious>
       </span>
     </div>
   </Container>
