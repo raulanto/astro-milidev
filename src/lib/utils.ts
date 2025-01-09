@@ -80,7 +80,7 @@ export function resolvePath(href: string | undefined | null, currentPath?: strin
 
   const resolvedPath = href.startsWith("/")
     ? base + href
-    : base + "/" + currentPath + "/" + href;
+    : currentPath?.replace(/\/$/, "") + "/" + href;
 
   return resolvedPath;
 }
