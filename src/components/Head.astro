@@ -26,13 +26,13 @@ import { resolvePath } from "@lib/utils";
 interface Props {
   title: string;
   description?: string;
-  socialCardImage?: string;
+  socialImage?: string;
 }
 
 const {
   title,
   description,
-  socialCardImage = resolvePath("/socialcard.png"),
+  socialImage = resolvePath("/socialcard.png"),
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
@@ -41,7 +41,7 @@ const twitterHandle = CONTACT.find(
   (contact) => contact.name === "X",
 )?.displayName;
 
-const socialCardImageFullPath = new URL(socialCardImage, Astro.site);
+const socialImageFullUrl = new URL(socialImage, Astro.site);
 ---
 
 <!-- Global Metadata -->
@@ -72,13 +72,13 @@ const socialCardImageFullPath = new URL(socialCardImage, Astro.site);
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={title} />
 {description && <meta property="og:description" content={description} />}
-<meta property="og:image" content={socialCardImageFullPath} />
+<meta property="og:image" content={socialImageFullUrl} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalUrl} />
 <meta property="twitter:title" content={title} />
-<meta property="twitter:image" content={socialCardImageFullPath} />
+<meta property="twitter:image" content={socialImageFullUrl} />
 {description && <meta property="twitter:description" content={description} />}
 {twitterHandle && <meta property="twitter:site" content={twitterHandle} />}
 

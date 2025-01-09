@@ -8,18 +8,16 @@ import { GLOBAL } from "@consts";
 type Props = {
   title: string;
   description?: string;
+  socialImage?: string;
 };
 
-const { title, description } = Astro.props;
+const { title, description, socialImage } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <Head
-      title={`${title} - ${GLOBAL.title}`}
-      description={description}
-    />
+    <Head title={`${title} - ${GLOBAL.title}`} {description} {socialImage} />
   </head>
   <body>
     <Header />

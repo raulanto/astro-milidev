@@ -29,9 +29,14 @@ const { prevPost, nextPost } = await getNavigationEntries(
 
 const post = Astro.props;
 const { Content, headings } = await post.render();
+
+const socialImage = post.data.socialImage
+  ? resolvePath(post.data.socialImage, Astro.url.pathname)
+  : undefined;
+
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} {socialImage}>
   <Container>
     <div class="animate">
       <BackToPrevious href={resolvePath("/blog", Astro.url.pathname)}
