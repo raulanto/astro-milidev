@@ -11,13 +11,21 @@ const linkedInContact = CONTACT.find((contact) => contact.name === "LinkedIn");
   <div class="animate mb-4">
     <p class="mb-1">The PDF resume:</p>
     <section>
-      <ArrowCardButton href="resume/resume.pdf" title="Download PDF" />
+      <ArrowCardButton
+        href="resume/resume.pdf"
+        text="Download PDF"
+        openInNewTab
+      />
     </section>
   </div>
   <div class="animate mb-4">
     <p class="mb-1">The DOCX resume:</p>
     <section>
-      <ArrowCardButton href="resume/resume.docx" title="Download DOCX" />
+      <ArrowCardButton
+        href="resume/resume.docx"
+        text="Download DOCX"
+        openInNewTab
+      />
     </section>
   </div>
 
@@ -28,7 +36,7 @@ const linkedInContact = CONTACT.find((contact) => contact.name === "LinkedIn");
         <section>
           <ArrowCardButton
             href={linkedInContact.href}
-            title="Navigate to LinkedIn"
+            text="Navigate to LinkedIn"
             openInNewTab
           />
         </section>

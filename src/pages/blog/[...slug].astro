@@ -31,7 +31,11 @@ const post = Astro.props;
 const { Content, headings } = await post.render();
 ---
 
-<Layout title={post.data.title} socialImage={post.data.socialImage}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  socialImage={post.data.socialImage}
+>
   <Container>
     <div class="animate">
       <BackToPrevious href={resolvePath("/blog", Astro.url.pathname)}
@@ -59,6 +63,13 @@ const { Content, headings } = await post.render();
       <h1 class="animate text-3xl font-semibold text-black dark:text-white">
         {post.data.title}
       </h1>
+      {
+        post.data.description && (
+          <p class="animate text-gray-600 dark:text-gray-400">
+            {post.data.description}
+          </p>
+        )
+      }
     </div>
     {headings.length > 0 && <TableOfContents headings={headings} />}
     <article class="animate">

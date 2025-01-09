@@ -84,3 +84,13 @@ export function resolvePath(href: string | undefined | null, currentPath?: strin
 
   return resolvedPath;
 }
+
+export function formatDateWithLastUpdateDate(date: Date, lastUpdateDate?: Date): string {
+  const formattedDate = date.toISOString().substring(0, 10);
+
+  if (lastUpdateDate) {
+    const formattedLastUpdateDate = lastUpdateDate.toISOString().substring(0, 10);
+    return `${formattedDate} (updated: ${formattedLastUpdateDate})`;
+  }
+  return formattedDate;
+}

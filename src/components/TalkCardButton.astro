@@ -1,25 +1,21 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import ArrowCardButton from "./ArrowCardButton.astro";
-import { resolvePath } from "@lib/utils";
+import { formatDateWithLastUpdateDate, resolvePath } from "@lib/utils";
 
 type Props = {
   entry: CollectionEntry<"talks">;
-  showDate?: boolean;
 };
 
-const { entry, showDate } = Astro.props;
-
-const description = showDate
-  ? entry.data.date.toISOString().substring(0, 10) +
-    (entry.data.lastUpdateDate
-      ? ` (updated: ${entry.data.lastUpdateDate.toISOString().substring(0, 10)})`
-      : "")
-  : undefined;
+const { entry } = Astro.props;
 ---
 
 <ArrowCardButton
   href={resolvePath(`/${entry.collection}/${entry.slug}`, Astro.url.pathname)}
-  title={entry.data.title}
-  description={description}
+  textAbove={formatDateWithLastUpdateDate(
+    entry.data.date,
+    entry.data.lastUpdateDate,
+  )}
+  text={entry.data.title}
+  textBelow={entry.data.description}
 />
