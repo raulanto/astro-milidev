@@ -29,11 +29,7 @@ interface Props {
   socialImage?: string;
 }
 
-const {
-  title,
-  description,
-  socialImage = resolvePath("/socialcard.png"),
-} = Astro.props;
+const { title, description, socialImage = "/social-card.png" } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
@@ -41,7 +37,7 @@ const twitterHandle = CONTACT.find(
   (contact) => contact.name === "X",
 )?.displayName;
 
-const socialImageFullUrl = new URL(socialImage, Astro.site);
+const socialImageFullUrl = new URL(resolvePath(socialImage), Astro.site);
 ---
 
 <!-- Global Metadata -->

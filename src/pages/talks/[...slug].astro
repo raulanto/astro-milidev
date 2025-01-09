@@ -22,7 +22,7 @@ const talk = Astro.props;
 const { Content, headings } = await talk.render();
 ---
 
-<Layout title={talk.data.title}>
+<Layout title={talk.data.title} socialImage={talk.data.socialImage}>
   <Container>
     <div class="animate">
       <BackToPrevious href={resolvePath("/talks", Astro.url.pathname)}

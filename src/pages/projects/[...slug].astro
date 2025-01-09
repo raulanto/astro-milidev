@@ -22,7 +22,11 @@ const project = Astro.props;
 const { Content, headings } = await project.render();
 ---
 
-<Layout title={project.data.title} description={project.data.description}>
+<Layout
+  title={project.data.title}
+  socialImage={project.data.socialImage}
+  description={project.data.description}
+>
   <Container>
     <div class="animate">
       <BackToPrevious href={resolvePath("/projects", Astro.url.pathname)}
