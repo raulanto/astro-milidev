@@ -10,21 +10,32 @@ const { small } = Astro.props;
 
 <div style={small ? "font-size: 0.875rem" : ""}>
   <p>
-    Essentially, it's the <TextLink href="https://astro-micro.vercel.app/"
+    A minimalistic blog+portfolio <TextLink href="https://astro.build"
+      >Astro</TextLink
+    > theme.
+  </p>
+  <p>
+    It originates from <TextLink
+      href="https://github.com/trevortylerlee"
+      external>Trevor Lee</TextLink
+    >'s <TextLink href="https://astro-micro.vercel.app/" external
       >Astro Micro</TextLink
-    > theme by
-    <TextLink href="https://github.com/trevortylerlee">Trevor Lee</TextLink>,
-    but with a few tweaks here and there.
+    >
+    theme, which is based on <TextLink
+      href="https://github.com/markhorn-dev"
+      external>Mark Horn</TextLink
+    >'s <TextLink href="https://astro-nano-demo.vercel.app/"
+      >Astro Nano</TextLink
+    > (after "nano" and "micro" comes "mili," hence the first part of the name).
   </p>
+  I tailored the original theme for my personal website <TextLink
+    href="https://lenar.dev">lenar.dev</TextLink
+  >, added a few features and refactored essential code parts. The full
+  changelog is available here.
   <p>
-    It's a base theme for my own blog that I released as a standalone Astro
-    theme just to prove that even a backend engineer like myself can jump in the
-    frontend world if needed and deliver a lot of value within a single day of
-    work.
-  </p>
-  <p>
-    All of the changes are briefly listed <TextLink
-      href="blog/milidev-changelog">in this post</TextLink
-    >.
+    I released Astro Milidev as an independent GitHub project. It's a
+    proof-of-concept that having GitHub Copilot a backend-oriented software
+    engineer like myself can contribute to the frontend space within a manday
+    (or two).
   </p>
 </div>

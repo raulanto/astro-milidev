@@ -30,7 +30,7 @@
      inkscape:window-width="1760"
      inkscape:window-height="836"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="44"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg4"
      showgrid="false"
@@ -132,12 +132,12 @@
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:110.261px;font-family:Menlo;-inkscape-font-specification:Menlo;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke-width:2.58423"
-     x="263.89828"
-     y="1122.9299"
+     x="203.96049"
+     y="1106.2805"
      id="text1"><tspan
        id="tspan1"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:110.261px;font-family:Menlo;-inkscape-font-specification:Menlo;stroke-width:2.58423"
-       x="263.89828"
-       y="1122.9299"
-       sodipodi:role="line">astro minimalistic portfolio+blog theme</tspan></text>
+       x="203.96049"
+       y="1106.2805"
+       sodipodi:role="line">a minimalistic portfolio+blog Astro theme</tspan></text>
 </svg>

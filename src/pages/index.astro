@@ -32,7 +32,7 @@ const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
 <Layout title={GLOBAL.author}>
   <Container>
     <aside data-pagefind-ignore>
-      <div class="animate flex items-center justify-center">
+      <div class="animate flex items-center justify-center mb-8">
         <img
           src={resolvePath(GLOBAL.authorPhotoSrc, Astro.url.pathname)}
           alt={GLOBAL.author}
