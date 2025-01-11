@@ -81,8 +81,8 @@ export const GLOBAL: Site & {
   };
 } = {
   title: "Astro Milidev",
-  description: "An accessible and lightweight Astro theme for developers.",
-  author: "John Doe",
+  description: "a minimalistic blog+portfolio Astro theme",
+  author: "Astro Milidev",
   authorPhotoSrc: "/johndoe.png",
   email:
     CONTACT.find((c) => c.name === "Email")?.href.substring("mailto:".length) ||
