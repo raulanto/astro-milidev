@@ -4,7 +4,7 @@ import RootPageIndex from "@components/RootPageIndex.astro";
 
 import { CONTACT } from "@consts";
 
-const linkedInContact = CONTACT.find((contact) => contact.name === "LinkedIn");
+const linkedInContact = CONTACT.find((contact) => contact.type === "LinkedIn");
 ---
 
 <RootPageIndex title="Resume">

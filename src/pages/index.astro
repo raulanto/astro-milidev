@@ -19,20 +19,20 @@ async function getCollectionEntries<T extends CollectionName>(
   return entries.slice(0, maxItems);
 }
 
-const blog = await getCollectionEntries("blog", HOME.maxBlogItems ?? 0);
+const blog = await getCollectionEntries("blog", HOME.blogEntries ?? 0);
 
 const projects = await getCollectionEntries(
   "projects",
-  HOME.maxProjectItems ?? 0,
+  HOME.projectEntries ?? 0,
 );
 
-const talks = await getCollectionEntries("talks", HOME.maxTalkItems ?? 0);
+const talks = await getCollectionEntries("talks", HOME.talkEntries ?? 0);
 ---
 
-<Layout title={GLOBAL.author}>
+<Layout title={HOME.title}>
   <Container>
     <aside data-pagefind-ignore>
-      <div class="animate flex items-center justify-center mb-8">
+      <div class="animate mb-8 flex items-center justify-center">
         <img
           src={resolvePath(GLOBAL.authorPhotoSrc, Astro.url.pathname)}
           alt={GLOBAL.author}

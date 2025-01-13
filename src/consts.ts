@@ -1,31 +1,56 @@
 export type CollectionName = "blog" | "projects" | "talks";
 
 type Site = {
-  title: string;
+  title?: string;
 };
 
+export type GlobalSite = Site & {
+  description: string;
+  author: string;
+  authorPhotoSrc: string;
+  logo?: {
+    darkThemeSrc?: string;
+    lightThemeSrc?: string;
+  };
+};
+
+export const GLOBAL: GlobalSite = {
+  title: "Astro Milidev",
+  description: "a minimalistic blog+portfolio Astro theme",
+  author: "John Doe",
+  authorPhotoSrc: "/johndoe.png",
+  logo: {
+    darkThemeSrc: "/logo/logo_dark.png",
+    lightThemeSrc: "/logo/logo_light.png",
+  }
+};
+
+
 type CollectionSite = Site & {
-  title: string;
   pageSize: number;
 };
 
-type LicenseInfo = {
-  name: string;
-  href: string;
+type HomeSite = Site & {
+  blogEntries?: number;
+  projectEntries?: number;
+  talkEntries?: number;
+}
+
+export const HOME: HomeSite = {
+  title: "Home title",
+  blogEntries: 5,
+  projectEntries: 3,
+  talkEntries: 3,
 };
 
-export const HOME: Site & {
-  maxBlogItems?: number;
-  maxProjectItems?: number;
-  maxTalkItems?: number;
-} = {
-  title: "Astro Milidev",
-  maxBlogItems: 5,
-  maxProjectItems: 3,
-  maxTalkItems: 3,
+type BlogSite = CollectionSite & {
+  license: {
+    name: string;
+    href: string;
+  }
 };
 
-export const BLOG: CollectionSite & { license: LicenseInfo } = {
+export const BLOG: BlogSite = {
   title: "Blog",
   pageSize: 10,
   license: {
@@ -44,51 +69,32 @@ export const TALKS: CollectionSite = {
   pageSize: 10,
 };
 
-export const CONTACT: {
-  name: string;
+type ContactInfo = {
+  type: string;
   href: string;
-  displayName?: string;
-}[] = [
-    {
-      name: "Email",
-      href: "mailto:email@example.com",
-      displayName: "email@example.com",
-    },
-    {
-      name: "X",
-      href: "https://x.com/BillGates",
-      displayName: "@BillGates",
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/dotnet",
-      displayName: "dotnet",
-    },
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/williamhgates/",
-    },
-  ];
+  account?: string;
+}
 
-export const GLOBAL: Site & {
-  description: string;
-  author: string;
-  authorPhotoSrc: string;
-  email: string;
-  logo?: {
-    darkThemeSrc?: string;
-    lightThemeSrc?: string;
-  };
-} = {
-  title: "Astro Milidev",
-  description: "a minimalistic blog+portfolio Astro theme",
-  author: "Astro Milidev",
-  authorPhotoSrc: "/johndoe.png",
-  email:
-    CONTACT.find((c) => c.name === "Email")?.href.substring("mailto:".length) ||
-    "",
-  logo: {
-    darkThemeSrc: "/logo/logo_dark.png",
-    lightThemeSrc: "/logo/logo_light.png",
-  }
-};
+type ContactSite = ContactInfo[]
+
+export const CONTACT: ContactSite = [
+  {
+    type: "Email",
+    href: "mailto:email@example.com",
+    account: "email@example.com",
+  },
+  {
+    type: "X",
+    href: "https://x.com/BillGates",
+    account: "@BillGates",
+  },
+  {
+    type: "GitHub",
+    href: "https://github.com/dotnet",
+    account: "dotnet",
+  },
+  {
+    type: "LinkedIn",
+    href: "https://www.linkedin.com/in/williamhgates/",
+  },
+];

@@ -34,8 +34,8 @@ const { title, description, ogImage = "/og-image.png" } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 const twitterHandle = CONTACT.find(
-  (contact) => contact.name === "X",
-)?.displayName;
+  (contact) => contact.type === "X",
+)?.account;
 
 const ogImageFullUrl = new URL(resolvePath(ogImage), Astro.site);
 ---
