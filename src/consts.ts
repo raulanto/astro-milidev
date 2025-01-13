@@ -1,7 +1,7 @@
 export type CollectionName = "blog" | "projects" | "talks";
 
 type Site = {
-  title?: string;
+  title: string;
 };
 
 export type GlobalSite = Site & {
