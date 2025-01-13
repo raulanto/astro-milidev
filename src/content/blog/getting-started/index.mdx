@@ -1,0 +1,217 @@
+---
+title: "Getting started"
+date: "2025-01-14"
+---
+
+---
+
+## Get Astro Milidev
+
+Clone the [Astro Milidev repository](https://github.com/bartoszlenar/astro-milidev.git).
+
+```sh
+git clone https://github.com/bartoszlenar/astro-milidev.git my-astro-milidev
+```
+
+```sh
+cd my-astro-micro
+```
+
+```sh
+npm i
+```
+
+```sh
+npm run build
+```
+
+```sh
+npm run dev
+```
+
+## Customize the website metadata
+
+To change the website metadata, edit `src/consts.ts`.
+
+This file contains also the type definitions. Please check them to be sure which value is required.
+
+### Image paths
+
+All image paths are relative to the `public` directory.
+
+It's essential that you start the path with `/`. Otherwise, you might encounter issues, especially when hosting your site with `base` path ("in the subdirectory").
+
+### Global metadata
+
+Start with `GLOBAL` variable:
+
+```ts
+// src/consts.ts
+
+export const GLOBAL: GlobalSite = {
+  title: "Astro Milidev",
+  description: "a minimalistic blog+portfolio Astro theme",
+  author: "John Doe",
+  authorPhotoSrc: "/johndoe.png",
+  logo: {
+    darkThemeSrc: "/logo/logo_dark.png",
+    lightThemeSrc: "/logo/logo_light.png",
+  }
+};
+```
+
+- `title` and `description` - part of the metadata (head, title, etc.) and RSS.
+- `author` - part of the metadata, footer and home site.
+- `authorPhotoSrc` - rendered on the home site and the bio under the blog posts.
+- `logo` - optional, but if present, you must provide light and dark versions. Rendered in the header. If not present, `title` text will be rendered instead.
+
+---
+
+### Home site
+
+```ts
+// src/consts.ts
+
+export const HOME: HomeSite = {
+  title: "Home title",
+  blogEntries: 5,
+  projectEntries: 3,
+  talkEntries: 3,
+};
+```
+
+- `title` - optional, appended to the website title.
+- `blogEntries`, `projectEntries`, `talkEntries` - how many entries from the particular collections are displayed on the home site.
+
+---
+
+### Collections site
+
+By default, there are three collections in Astro Milidev: blog, projects, and talks.
+
+```ts
+export const BLOG: BlogSite = {
+  title: "Blog",
+  pageSize: 10,
+  license: {
+    name: "CC BY-NC-ND 4.0",
+    href: "https://creativecommons.org/licenses/by-nc-nd/4.0",
+  },
+};
+
+export const PROJECTS: CollectionSite = {
+  title: "Projects",
+  pageSize: 10,
+};
+
+export const TALKS: CollectionSite = {
+  title: "Talks",
+  pageSize: 10,
+};
+```
+
+- `title` - optional, appended to the website title.
+- `pageSize` - how many entries are displayed on the single page on the collection site.
+- `license` - license information, added to all blog post sites.
+
+---
+
+## Add your contact details
+
+```ts
+// src/consts.ts
+
+export const CONTACT: ContactSite = [
+  {
+    type: "Email",
+    href: "mailto:email@example.com",
+    account: "email@example.com",
+  },
+  {
+    type: "X",
+    href: "https://x.com/BillGates",
+    account: "@BillGates",
+  },
+  {
+    type: "GitHub",
+    href: "https://github.com/dotnet",
+    account: "dotnet",
+  },
+  {
+    type: "LinkedIn",
+    href: "https://www.linkedin.com/in/williamhgates/",
+  },
+];
+```
+
+All above are displayed on the contact site. 
+
+- `type` and `href` - the type of the contact and the link that navigates to it.
+- `account` - optional, displayed on the contact site.
+
+
+## Deploy the site
+
+To set up RSS and Giscus, it's easier if the site is deployed and has a URL for you to use. Instantly deploy to Vercel or Netlify by clicking the buttons below.
+
+<div class="flex gap-2">
+  <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/trevortylerlee/astro-micro">
+    <img src="deploy_vercel.svg" />
+  </a>
+  <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/trevortylerlee/astro-micro">
+    <img src="deploy_netlify.svg" />
+  </a>
+</div>
+
+To deploy manually see [Astro's docs](https://docs.astro.build/en/guides/deploy/).
+
+## Set up the address
+
+Navigate to the `astro.config.mjs` file and set the `site` and `base` properties.
+
+- `site` - the URL of your site, starting with protocol
+- `base` - the base path of your site, if it's hosted in a subdirectory. It should start and end with a slash.
+
+```js
+// astro.config.mjs
+
+export default defineConfig({
+  site: "https://bartoszlenar.github.io",
+  base: "/astro-milidev/",
+  integrations: [tailwind(), sitemap(), mdx(), pagefind()],
+  markdown: {
+    shikiConfig: {
+      theme: "css-variables",
+    },
+  },
+});
+```
+
+## Set up Giscus
+
+Follow the steps at [giscus.app](https://giscus.app). Once you get your custom Giscus script from that site, go to `Giscus.astro` and replace that script with your own.
+
+```js
+// src/components/Giscus.astro
+
+<script
+  is:inline
+  src="https://giscus.app/client.js"
+  data-repo="trevortylerlee/astro-micro"
+  data-repo-id="R_kgDOL_6l9Q"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOL_6l9c4Cfk55"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="preferred_color_scheme"
+  data-lang="en"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async></script>
+
+```
+
+To change the Giscus themes used, edit the `setGiscusTheme` function in `Head.astro`.

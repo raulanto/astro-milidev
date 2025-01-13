@@ -3,8 +3,7 @@ title: "Markdown syntax guide"
 date: "2024-03-17 12:23:33"
 ---
 
-import Callout from "@/components/Callout.astro";
-import MdxPublicImage from "@/components/MdxPublicImage.astro";
+import Callout from "@components/Callout.astro";
 
 ---
 
@@ -205,15 +204,21 @@ Use the `![altText](/image.*)` pattern relative to the public folder. No period.
 
 ![Y-Wing Starfighter](/y-wing.jpeg)
 
-### Public Image when base path is defined
+<Callout type="warning">
+  This doesn't work if the website is hosted with a base path (in `astro.config.mjs`).
+</Callout>
 
-The [method described above](#public-image) doesn't work if the website is hosted with a base path, e.g.: `https://rootdomain.com/subdirectory` (`subdirectory` is the `base` value set in `astro.config.mjs`).
+If the website is hosted with a base path, import `@components/MdxPublicImage.astro` shared component and provide path relative to the public folder (starting with slash).
 
-To handle this case, you need to use MDX format and then `MdxPublicImage` component:
 
-```md
+```jsx
+import MdxPublicImage from "@components/MdxPublicImage.astro";
+
 <MdxPublicImage src="/y-wing.jpeg" alt="Y-Wing Starfighter" />
 ```
+
+
+import MdxPublicImage from "@components/MdxPublicImage.astro";
 
 <MdxPublicImage src="/y-wing.jpeg" alt="Y-Wing Starfighter" />
 

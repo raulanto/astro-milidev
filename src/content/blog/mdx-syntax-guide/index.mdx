@@ -3,40 +3,42 @@ title: "MDX syntax guide"
 date: "2024-03-16"
 ---
 
-import Callout from "@/components/Callout.astro";
+import Callout from "@components/Callout.astro";
 
 ---
+
+## About MDX
 
 MDX is an extension of Markdown with the ability to import `.astro`,
 `.jsx`, `.tsx` and other framework components you have integrated.
 
 This guide covers the basics of MDX syntax and how to use it, as well as a few examples.
 
-## Example 1
+## Importing shared components
 
 Importing a component from the `/components` directory.
 
 This component accepts a Javascript date object and format it as a string.
 
-```astro
-import DateComp from "../../../components/FormattedDate.astro";
+```jsx
+import FormattedDate from "@components/FormattedDate.astro";
 
-<DateComp date={new Date()} />
+<FormattedDate date={new Date()} />
 ```
 
-import FormattedDate from "../../../components/FormattedDate.astro";
+import FormattedDate from "@components/FormattedDate.astro";
 
 <FormattedDate date={new Date()} />
 
 ---
 
-## Example 2
+## Importing private components
 
 Importing a component from a relative path to your content.
 
 This component displays an alert when the button is clicked.
 
-```astro
+```jsx
 import RelativeComponent from "./component.astro";
 
 <RelativeComponent />
@@ -47,6 +49,8 @@ import RelativeComponent from "./component.astro";
 <RelativeComponent />
 
 ---
+
+## Using frameworks
 
 By default Micro has zero frameworks installed. If you install a framework, components of that framework can be used in MDX files.
 
@@ -59,6 +63,14 @@ By default Micro has zero frameworks installed. If you install a framework, comp
 ```astro
 <ReactComponent client:load />
 ```
+
+---
+
+## Markdown syntax guide
+
+MDX supports Markdown syntax, so you can use all the features of Markdown in your MDX files.
+
+More about Markdown syntax in this [blog post](markdown-syntax-guide).
 
 ---
 

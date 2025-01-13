@@ -1,7 +1,7 @@
 ---
 title: "Draft example"
 date: "2022-12-31"
-draft: false
+draft: true
 ---
 
 This post also demonstrates the year sorting capabilities.
