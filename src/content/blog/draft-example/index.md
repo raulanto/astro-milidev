@@ -1,6 +1,6 @@
 ---
 title: "Draft example"
-date: "2022-12-31"
+date: "2025-01-02"
 draft: true
 ---
 

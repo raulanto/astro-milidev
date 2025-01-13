@@ -1,5 +1,6 @@
 ---
 import TextLink from "@components/TextLink.astro";
+import { resolvePath } from "@lib/utils";
 
 type Props = {
   small?: boolean;
@@ -28,14 +29,16 @@ const { small } = Astro.props;
       >Astro Nano</TextLink
     > (after "nano" and "micro" comes "mili", hence the first part of the name).
   </p>
-  I tailored the original theme for my personal website <TextLink
-    href="https://lenar.dev">lenar.dev</TextLink
-  > (hence the second part of the name), added a few features and refactored essential
-  code parts. The full changelog is available here.
   <p>
-    I released Astro Milidev as an independent GitHub project. It's a
-    proof-of-concept that having GitHub Copilot a backend-oriented software
-    engineer like myself can contribute to the frontend space within a manday
-    (or two).
+    I tailored the original theme for my personal website <TextLink
+      href="https://lenar.dev">lenar.dev</TextLink
+    > (hence the second part of the name), added a few features, refactored essential
+    code parts and released as an independent GitHub project.
+  </p>
+  <p>
+    The full changelog is available <TextLink
+      href={resolvePath("/blog/everything-new-in-astro-milidev")}
+      >in this post</TextLink
+    >.
   </p>
 </div>

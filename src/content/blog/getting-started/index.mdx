@@ -1,6 +1,6 @@
 ---
 title: "Getting started"
-date: "2025-01-14"
+date: "2025-01-05"
 ---
 
 ---
@@ -17,17 +17,30 @@ git clone https://github.com/bartoszlenar/astro-milidev.git my-astro-milidev
 cd my-astro-micro
 ```
 
+Install dependencies:
+
 ```sh
 npm i
 ```
+
+Build the site:
 
 ```sh
 npm run build
 ```
 
+To develop the site with live re:
+
 ```sh
 npm run dev
 ```
+
+To see the site in the production mode (remember to build the site with `npm run build` first after every update):
+
+```sh
+npm run preview
+```
+
 
 ## Customize the website metadata
 
@@ -150,21 +163,6 @@ All above are displayed on the contact site.
 - `account` - optional, displayed on the contact site.
 
 
-## Deploy the site
-
-To set up RSS and Giscus, it's easier if the site is deployed and has a URL for you to use. Instantly deploy to Vercel or Netlify by clicking the buttons below.
-
-<div class="flex gap-2">
-  <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/trevortylerlee/astro-micro">
-    <img src="deploy_vercel.svg" />
-  </a>
-  <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/trevortylerlee/astro-micro">
-    <img src="deploy_netlify.svg" />
-  </a>
-</div>
-
-To deploy manually see [Astro's docs](https://docs.astro.build/en/guides/deploy/).
-
 ## Set up the address
 
 Navigate to the `astro.config.mjs` file and set the `site` and `base` properties.
@@ -186,6 +184,12 @@ export default defineConfig({
   },
 });
 ```
+
+## Deploy the site
+
+There is a github workflow prepared in `.github/workflows/deploy.yml` that handles deployment to GitHub Pages.
+
+To deploy manually see [Astro's docs](https://docs.astro.build/en/guides/deploy/).
 
 ## Set up Giscus
 
