@@ -129,10 +129,51 @@ ___
 To create a link, the link text in brackets \(\[\]\) and then follow it immediately with the URL in parentheses \(\(\)\).
 
 ```md
-Micro is a fork of [astro-nano](https://github.com/markhorn-dev/astro-nano).
+Astro Milidev is a fork of [astro-nano](https://github.com/markhorn-dev/astro-nano).
 ```
 
-Micro is a fork of [astro-nano](https://github.com/markhorn-dev/astro-nano).
+Astro Milidev is a fork of [astro-nano](https://github.com/markhorn-dev/astro-nano).
+
+
+### Relative links
+
+If you want to link to another page on your site, you might want use a relative link.
+
+```md
+[Link to another post](../everything-new-in-astro-milidev)
+```
+
+[Link to another post](../everything-new-in-astro-milidev)
+
+<Callout type="warning">
+It might not work locally (in both dev and preview mdoes) and I have no idea why, I'm a purely backend engineer. It works fine in production, though.
+Yes, I know `<base>` tag, but setting it breaks other things e.g.: Table of Contents.
+</Callout>
+
+### Links to public files
+
+If you want to link to a file in the public folder, you might experience problems while hosting the site with a base path ( `base` property in the `astro.config.mjs` file).
+
+Relative paths work fine with link (they don't with images, [see why](#public-image)):
+
+```md
+[Link to public file using relative path](../resume/resume.pdf)
+```
+
+[Link to public file using relative path](../resume/resume.pdf)
+
+You might also use the dedicated component `@components/MdxPublicLink.astro` to link to public files. 
+Start your path with `/` and the final path will be resolved taking your `base` property into account.
+
+```jsx
+import MdxPublicLink from "@components/MdxPublicLink.astro";
+
+<MdxPublicLink href="/resume/resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
+```
+
+import MdxPublicLink from "@components/MdxPublicLink.astro";
+
+<MdxPublicLink href="/resume/resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
 
 ---
 
@@ -184,7 +225,7 @@ To add an image, add an exclamation mark (!), followed by alt text in brackets (
 ![altText](pathToImage)
 ```
 
-### Relative
+### Relative images
 
 Use the `![altText](./image.*)` pattern relative to the same folder as the markdown file. Notice the period.
 
@@ -194,7 +235,7 @@ Use the `![altText](./image.*)` pattern relative to the same folder as the markd
 
 ![X-Wing Starfighter](./x-wing.jpeg)
 
-### Public Image
+### Public images
 
 Use the `![altText](/image.*)` pattern relative to the public folder. No period.
 
@@ -209,7 +250,6 @@ Use the `![altText](/image.*)` pattern relative to the public folder. No period.
 </Callout>
 
 If the website is hosted with a base path, import `@components/MdxPublicImage.astro` shared component and provide path relative to the public folder (starting with slash).
-
 
 ```jsx
 import MdxPublicImage from "@components/MdxPublicImage.astro";

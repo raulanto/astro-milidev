@@ -10,7 +10,63 @@ import Callout from "@/components/Callout.astro";
 
 ---
 
+## Support for base path
+
+Astro Milidev supports the base path. If you want to host your site in a "subdirectory", you can set the `base` property in the `astro.config.mjs` file.
+
+This is useful when you want to host your site on e.g., GitHub Pages.
+
+The `<base>` tag is not used due to the errors it causes in different places. 
+Most of the time the components use `resolvePath` function from `src/utils.ts` to generate correct paths. 
+
+Navigate to the [Getting started](../getting-started) post to read how to handle [images](../getting-started#public-images) and [links](../getting-started#relative-links).
+
 ## Pagination
+
+All collection supports pagination by default. On the collection page, you can navigate between pages using the pagination component. 
+The number of items per page is configurable in the `src/consts.ts` file (individually for each collection).
+
+The URL address contains collection name followed with a page number. For example, the 3rd page of the `blog` collection is under `https://example.com/blog/3`.
+
+## Individual OpenGraph images
+
+Each post can have its own OpenGraph image defined by `ogImage` property in the post metadata section. If no image is provided, the global OpenGraph image is used.
+
+## Last update date
+
+For updated posts, you can provide the last update date. It's displayed next to the publish date on the post page and in the buttons.
+If `lastUpdateDate` property is defined, it takes precedence over `date` in sorting.
+
+## Graphical logo
+
+Astro Milidev allows to set up a graphical logo. The max dimenstions are 240px width and 50px height. 
+Two versions are supported: light and dark. The logo is configured in the `GLOBAL` variable defined in `src/consts.ts` file.
+
+If no logo is provided, Astro Milidev fallbacks to `GLOBAL.title` text.
+
+## License
+
+All posts have a license information. The license is displayed below the post content and is configurable in the `src/consts.ts` file (single license for all of the posts).
+
+## Bio
+
+On the home site and below each post, you can find a bio section from `src/components/Bio.astro` file.
+
+## Refactor
+
+Astro Milidev has the "dev" in the name and that's not only because it's tailored for the software engineers' needs.
+
+I'm a backend engineer and refactor a lot of code that I encountered in the Astro Micro theme.
+
+Sometimes it's just a small change, sometimes it's a complete rewrite. The changes contain but are not limited to:
+
+- Single function that handles collection fetching, filtering and sorting. Now you change the logic in `getFilteredCollectionEntries` and you see the effects on the collection's page, in the navigation order, on the home site, etc. All of the places use it as a source of truth.
+- Upgraded Astro and all packages to the latest version.
+- Using variables from `consts` consistently across the sites. The `consts.ts` file itself also have more intuitive structure.
+- Unified and standardized the arrow card buttons.
+- Unified date formatting.
+- Removed grouping collection entires by year. Added dates to the card buttons instead.
+- And a lot of other small fixes, refactorings and cleaning up unused codes.
 
 ## Original Astro Micro changelog
 
