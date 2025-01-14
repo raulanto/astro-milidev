@@ -137,7 +137,7 @@ Astro Milidev is a fork of [astro-nano](https://github.com/markhorn-dev/astro-na
 
 ### Relative links
 
-If you want to link to another page on your site, you might want use a relative link.
+If you want to link to another page on your site, use a relative link.
 
 ```md
 [Link to another post](../everything-new-in-astro-milidev)
@@ -146,8 +146,12 @@ If you want to link to another page on your site, you might want use a relative 
 [Link to another post](../everything-new-in-astro-milidev)
 
 <Callout type="warning">
-It might not work locally (in both dev and preview mdoes) and I have no idea why, I'm a purely backend engineer. It works fine in production, though.
-Yes, I know `<base>` tag, but setting it breaks other things e.g.: Table of Contents.
+It might not work locally (in both dev and preview mdoes) and I have no idea why, I'm a purely backend engineer. The localhost hosts seem to treat the base path differenlty or something. It works fine in production, though.
+And yes, I know `<base>` tag, but setting it breaks other things e.g.: Table of Contents.
+</Callout>
+
+<Callout type="info">
+And yes, I know `<base>` tag, but setting it breaks other things e.g.: Table of Contents. So the solution doesn't use it.
 </Callout>
 
 ### Links to public files

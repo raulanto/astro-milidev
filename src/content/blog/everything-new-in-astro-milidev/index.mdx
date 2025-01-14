@@ -12,9 +12,9 @@ import Callout from "@/components/Callout.astro";
 
 ## Support for base path
 
-Astro Milidev supports the base path. If you want to host your site in a "subdirectory", you can set the `base` property in the `astro.config.mjs` file.
+Astro Milidev supports the base path, so you can host your site in the nested "subdirectory". Just set the `base` property in the `astro.config.mjs` file.
 
-This is useful when you want to host your site on e.g., GitHub Pages.
+This is useful when you want to host your site on e.g., GitHub Pages under `https://username.github.io/repo-name/`. In this case, you should set the `base` property to `/repo-name/`.
 
 The `<base>` tag is not used due to the errors it causes in different places. 
 Most of the time the components use `resolvePath` function from `src/utils.ts` to generate correct paths. 
@@ -23,23 +23,24 @@ Navigate to the [Content and syntax guide](../content-and-syntax-guide) post to 
 
 ## Pagination
 
-All collection supports pagination by default. On the collection page, you can navigate between pages using the pagination component. 
+All collections support pagination by default. On the collection page, you can navigate between pages using the pagination component at the bottom. 
 The number of items per page is configurable in the `src/consts.ts` file (individually for each collection).
 
 The URL address contains collection name followed with a page number. For example, the 3rd page of the `blog` collection is under `https://example.com/blog/3`.
 
 ## Individual OpenGraph images
 
-Each post can have its own OpenGraph image defined by `ogImage` property in the post metadata section. If no image is provided, the global OpenGraph image is used.
+Each post can have its own OpenGraph image defined by `ogImage` property in the post metadata section. If no image is provided, the global OpenGraph image (`/og-image.png`) is used.
 
 ## Last update date
 
-For updated posts, you can provide the last update date. It's displayed next to the publish date on the post page and in the buttons.
+For the posts with updated content, you can provide the `lastUpdateDate` in the document metadata. It's displayed next to the publish date on the post page and in the buttons.
 If `lastUpdateDate` property is defined, it takes precedence over `date` in sorting.
 
 ## Graphical logo
 
-Astro Milidev allows to set up a graphical logo. The max dimenstions are 240px width and 50px height. 
+Astro Milidev allows to set up a graphical logo. The max dimensions are set to 240px width and 50px height. Your image can be larger, but it will be rendered to fit the dimensions.
+
 Two versions are supported: light and dark. The logo is configured in the `GLOBAL` variable defined in `src/consts.ts` file.
 
 If no logo is provided, Astro Milidev fallbacks to `GLOBAL.title` text.
@@ -54,11 +55,11 @@ On the home site and below each post, you can find a bio section from `src/compo
 
 ## Refactor
 
-Astro Milidev has the "dev" in the name and that's not only because it's tailored for the software engineers' needs.
+Astro Milidev has the "dev" in the name not only because it's tailored for the software engineers' needs.
 
-I'm a backend engineer and refactor a lot of code that I encountered in the Astro Micro theme.
+I'm a backend engineer and refactored a lot of original Astro Nano and Astro Micro code in the "backendish" way.
 
-Sometimes it's just a small change, sometimes it's a complete rewrite. The changes contain but are not limited to:
+Sometimes it was a small change, sometimes a complete rewrite. The changes contain but are not limited to:
 
 - Single function that handles collection fetching, filtering and sorting. Now you change the logic in `getFilteredCollectionEntries` and you see the effects on the collection's page, in the navigation order, on the home site, etc. All of the places use it as a source of truth.
 - Upgraded Astro and all packages to the latest version.
@@ -67,6 +68,8 @@ Sometimes it's just a small change, sometimes it's a complete rewrite. The chang
 - Unified date formatting.
 - Removed grouping collection entires by year. Added dates to the card buttons instead.
 - And a lot of other small fixes, refactorings and cleaning up unused codes.
+
+It's more maintainable and easier to extend now, so if you want to add new features or change the existing ones, you should find it easier to do in Astro Milidev than in the original Astro Micro / Astro Nano.
 
 ## Original Astro Micro changelog
 

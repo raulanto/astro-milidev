@@ -29,7 +29,7 @@ Build the site:
 npm run build
 ```
 
-To develop the site with live re:
+To develop the site with live reload:
 
 ```sh
 npm run dev
@@ -46,13 +46,13 @@ npm run preview
 
 To change the website metadata, edit `src/consts.ts`.
 
-This file contains also the type definitions. Please check them to be sure which value is required.
+Please check the type definitions to see which values are required.
 
 ### Image paths
 
 All image paths are relative to the `public` directory.
 
-It's essential that you start the path with `/`. Otherwise, you might encounter issues, especially when hosting your site with `base` path ("in the subdirectory").
+It's essential that you start the path with `/`. Otherwise, you might encounter issues, especially when hosting your site with `base` path set in the `astro.config.mjs` file.
 
 ### Global metadata
 
