@@ -3,6 +3,7 @@ import ArrowCardButton from "@components/ArrowCardButton.astro";
 import RootPageIndex from "@components/RootPageIndex.astro";
 
 import { CONTACT } from "@consts";
+import { resolvePath } from "@lib/utils";
 
 const linkedInContact = CONTACT.find((contact) => contact.type === "LinkedIn");
 ---
@@ -12,7 +13,7 @@ const linkedInContact = CONTACT.find((contact) => contact.type === "LinkedIn");
     <p class="mb-1">The PDF resume:</p>
     <section>
       <ArrowCardButton
-        href="resume/resume.pdf"
+        href={resolvePath("/resume/milidev_resume.pdf", Astro.url.pathname)}
         text="Download PDF"
         openInNewTab
       />
@@ -22,7 +23,7 @@ const linkedInContact = CONTACT.find((contact) => contact.type === "LinkedIn");
     <p class="mb-1">The DOCX resume:</p>
     <section>
       <ArrowCardButton
-        href="resume/resume.docx"
+        href={resolvePath("/resume/milidev_resume.docx", Astro.url.pathname)}
         text="Download DOCX"
         openInNewTab
       />
