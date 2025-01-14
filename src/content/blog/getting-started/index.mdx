@@ -187,9 +187,9 @@ export default defineConfig({
 
 ## Deploy the site
 
-There is a github workflow prepared in `.github/workflows/deploy.yml` that handles deployment to GitHub Pages.
+Astro Milidev already contains a github workflow that will deploy the page to Github Pages: `.github/workflows/deploy.yml`. The workflow is taken from the (official guide)[https://docs.astro.build/en/guides/deploy/github/].
 
-To deploy manually see [Astro's docs](https://docs.astro.build/en/guides/deploy/).
+For manual deployment instructions and other deployment options, see [Astro's docs](https://docs.astro.build/en/guides/deploy/).
 
 ## Set up Giscus
 
@@ -199,14 +199,13 @@ Follow the steps at [giscus.app](https://giscus.app). Once you get your custom G
 // src/components/Giscus.astro
 
 <script
-  is:inline
   src="https://giscus.app/client.js"
-  data-repo="trevortylerlee/astro-micro"
-  data-repo-id="R_kgDOL_6l9Q"
+  data-repo="bartoszlenar/astro-milidev"
+  data-repo-id="R_kgDONiccDA"
   data-category="Announcements"
-  data-category-id="DIC_kwDOL_6l9c4Cfk55"
+  data-category-id="DIC_kwDONiccDM4Cl5CN"
   data-mapping="pathname"
-  data-strict="0"
+  data-strict="1"
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="top"
@@ -214,8 +213,38 @@ Follow the steps at [giscus.app](https://giscus.app). Once you get your custom G
   data-lang="en"
   data-loading="lazy"
   crossorigin="anonymous"
-  async></script>
+  async
+></script>
 
 ```
 
 To change the Giscus themes used, edit the `setGiscusTheme` function in `Head.astro`.
+
+## RSS feed
+
+RSS is generated automatically. The feed is available at `/feed.xml` and configured in `src/pages/feed.xml.js`.
+
+## Create your content
+
+### Collections
+
+The collections are stored in the `src/content` directory and each collection has its own subdirectory. 
+At the beginning there are bunch of example entries (e.g. this very file) that you can safely delete, so `blog`, `projects` and `talks` directories are empty.
+
+More: [Collections guide](collections-guide)
+
+### Pages
+
+Pages are in `src/pages` directory. By default Astro Milidev contains `resume` and `contact`.
+
+### Content
+
+Astro Milidev uses markdown syntax (with MDX support) for the content.
+
+More: [Syntax guide](syntax-guide)
+
+## Astro Milidev features
+
+Astro Milidev is based on [Astro Micro](https://github.com/trevortylerlee/astro-micro) and [Astro Nano](https://github.com/markhorn-dev/astro-nano).
+
+The changes are described in this post: [Everything new in Astro Milidev](everything-new-in-astro-milidev).
