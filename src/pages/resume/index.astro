@@ -20,11 +20,11 @@ const linkedInContact = CONTACT.find((contact) => contact.type === "LinkedIn");
     </section>
   </div>
   <div class="animate mb-4">
-    <p class="mb-1">The DOCX resume:</p>
+    <p class="mb-1">The TXT resume:</p>
     <section>
       <ArrowCardButton
-        href={resolvePath("/resume/milidev_resume.docx", Astro.url.pathname)}
-        text="Download DOCX"
+        href={resolvePath("/resume/milidev_resume.txt", Astro.url.pathname)}
+        text="Download TXT"
         openInNewTab
       />
     </section>
