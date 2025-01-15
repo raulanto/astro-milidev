@@ -30,7 +30,7 @@ const { Content, headings } = await entry.render();
       >
     </div>
     <EntryHeader {...entry.data} body={entry.body} />
-    <TableOfContents headings={headings} />
+    {headings?.length ? <TableOfContents headings={headings} /> : undefined}
     <article class="animate">
       <hr />
       <Content />
