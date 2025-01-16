@@ -100,7 +100,7 @@ export async function getAllEntriesWithTags() {
     ...(await getFilteredCollectionEntries("blog")).entries,
     ...(await getFilteredCollectionEntries("talks")).entries,
     ...(await getFilteredCollectionEntries("projects")).entries,
-  ];
+  ].sort(sortByLastUpdateDate);
 
   const tags = [
     ...new Set(entries.flatMap((entry) => entry.data.tags || [])),
