@@ -1,6 +1,7 @@
 ---
 import FormattedDate from "./FormattedDate.astro";
 import { readingTime } from "@lib/utils";
+import Tag from "./Tag.astro";
 
 interface Props {
     title: string;
@@ -8,9 +9,10 @@ interface Props {
     lastUpdateDate?: Date;
     description?: string;
     body: string;
+    tags?: string[];
 }
 
-const { title, date, lastUpdateDate, description, body } = Astro.props;
+const { title, date, lastUpdateDate, description, body, tags } = Astro.props;
 ---
 
 <div class="my-10 space-y-1">
@@ -40,5 +42,14 @@ const { title, date, lastUpdateDate, description, body } = Astro.props;
                 {description}
             </p>
         )
+    }
+    {
+        tags && tags?.length > 0 ? (
+            <div class="animate flex gap-2 pt-1">
+                {tags.map((tag) => (
+                    <Tag tag={tag} />
+                ))}
+            </div>
+        ) : null
     }
 </div>

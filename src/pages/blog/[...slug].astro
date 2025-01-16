@@ -42,6 +42,7 @@ const { Content, headings } = await entry.render();
       </BackToPrevious>
     </div>
     <EntryHeader {...entry.data} body={entry.body} />
+    
     {headings.length > 0 && <TableOfContents headings={headings} />}
     <article class="animate">
       <Content />
