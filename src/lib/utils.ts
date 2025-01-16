@@ -94,3 +94,17 @@ export function formatDateWithLastUpdateDate(date: Date, lastUpdateDate?: Date):
   }
   return formattedDate;
 }
+
+export async function getAllEntriesWithTags() {
+  const entries = [
+    ...(await getFilteredCollectionEntries("blog")).entries,
+    ...(await getFilteredCollectionEntries("talks")).entries,
+    ...(await getFilteredCollectionEntries("projects")).entries,
+  ];
+
+  const tags = [
+    ...new Set(entries.flatMap((entry) => entry.data.tags || [])),
+  ].sort();
+
+  return { tags, entries }
+}

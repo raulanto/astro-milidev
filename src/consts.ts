@@ -69,6 +69,11 @@ export const TALKS: CollectionSite = {
   pageSize: 10,
 };
 
+export const TAGS: CollectionSite = {
+  title: "Tags",
+  pageSize: 10,
+};
+
 type ContactInfo = {
   type: string;
   href: string;

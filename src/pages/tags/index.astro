@@ -1,20 +1,13 @@
 ---
-import { getFilteredCollectionEntries } from "@lib/utils";
+import { getAllEntriesWithTags } from "@lib/utils";
 import RootPageIndex from "@components/RootPageIndex.astro";
 import { resolvePath } from "@lib/utils";
+import { TAGS } from "@consts";
 
-const entries = [
-    ...(await getFilteredCollectionEntries("blog")).entries,
-    ...(await getFilteredCollectionEntries("talks")).entries,
-    ...(await getFilteredCollectionEntries("projects")).entries,
-];
-
-const tags = [
-    ...new Set(entries.flatMap((post) => post.data.tags || [])),
-].sort();
+const { entries, tags } = await getAllEntriesWithTags();
 ---
 
-<RootPageIndex title="Tags">
+<RootPageIndex title={TAGS.title}>
     {
         (
             <div class="animate flex flex-wrap gap-2">
@@ -24,12 +17,14 @@ const tags = [
                         class="rounded border border-black/15 px-2 py-1 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
                     >
                         {tag}
-                        <span class="ml-2 text-gray-500 text-sm">
-                            ({
+                        <span class="ml-2 text-sm text-gray-500">
+                            (
+                            {
                                 entries.filter((post) =>
                                     post.data.tags?.includes(tag),
                                 ).length
-                            })
+                            }
+                            )
                         </span>
                     </a>
                 ))}

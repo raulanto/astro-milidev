@@ -1,46 +1,40 @@
 ---
-import { getCollection } from "astro:content";
-import {
-    formatDateWithLastUpdateDate,
-    getFilteredCollectionEntries,
-    resolvePath,
-} from "@lib/utils";
+import { getAllEntriesWithTags, resolvePath } from "@lib/utils";
 import RootPageIndex from "@components/RootPageIndex.astro";
-import ArrowCardButton from "@components/ArrowCardButton.astro";
 import PageNavigation from "@components/PageNavigation.astro";
 import type { CollectionEntry } from "astro:content";
 import BlogCardButton from "@components/BlogCardButton.astro";
 import { undefined } from "astro:schema";
 import ProjectCardButton from "@components/ProjectCardButton.astro";
 import TalkCardButton from "@components/TalkCardButton.astro";
+import { TAGS, type CollectionName } from "@consts";
+import BackToPrevious from "@components/BackToPrevious.astro";
 
-export async function getStaticPaths() {
-    const entries = [
-        ...(await getFilteredCollectionEntries("blog")).entries,
-        ...(await getFilteredCollectionEntries("talks")).entries,
-        ...(await getFilteredCollectionEntries("projects")).entries,
-    ];
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+    const { entries, tags } = await getAllEntriesWithTags();
 
-    const tags = [
-        ...new Set(entries.flatMap((post) => post.data.tags || [])),
-    ].sort();
-
-    return tags.map((tag) => ({
-        params: { slug: tag },
-        props: {
-            entries: entries.filter((post) => post.data.tags?.includes(tag)),
-        },
-    }));
+    return tags.flatMap((tag) => {
+        const tagEntries = entries.filter((post) =>
+            post.data.tags?.includes(tag),
+        );
+        return paginate(tagEntries, {
+            params: { slug: tag },
+            pageSize: TAGS.pageSize,
+        });
+    });
 }
+
 const { slug } = Astro.params;
-const { entries } = Astro.props;
+const { page } = Astro.props;
+
+const entries = page.data;
 
 const groupedEntries: {
     collection: string;
-    entries: CollectionEntry<"blog" | "projects" | "talks">[];
+    entries: CollectionEntry<CollectionName>[];
 }[] = [];
 
-let currentCollection: "blog" | "projects" | "talks" | undefined;
+let currentCollection: CollectionName | undefined;
 
 for (const entry of entries) {
     const collection = entry.collection;
@@ -58,6 +52,11 @@ for (const entry of entries) {
 ---
 
 <RootPageIndex title={`Tag: ${slug}`}>
+    <div class="animate">
+        <BackToPrevious href={resolvePath("/tags", Astro.url.pathname)}
+            >See all tags</BackToPrevious
+        >
+    </div>
     {
         (
             <ul class="animate not-prose mb-12 flex flex-col gap-4">
@@ -100,4 +99,5 @@ for (const entry of entries) {
             </ul>
         )
     }
+    <PageNavigation page={page} />
 </RootPageIndex>
