@@ -1,0 +1,103 @@
+---
+import { getCollection } from "astro:content";
+import {
+    formatDateWithLastUpdateDate,
+    getFilteredCollectionEntries,
+    resolvePath,
+} from "@lib/utils";
+import RootPageIndex from "@components/RootPageIndex.astro";
+import ArrowCardButton from "@components/ArrowCardButton.astro";
+import PageNavigation from "@components/PageNavigation.astro";
+import type { CollectionEntry } from "astro:content";
+import BlogCardButton from "@components/BlogCardButton.astro";
+import { undefined } from "astro:schema";
+import ProjectCardButton from "@components/ProjectCardButton.astro";
+import TalkCardButton from "@components/TalkCardButton.astro";
+
+export async function getStaticPaths() {
+    const entries = [
+        ...(await getFilteredCollectionEntries("blog")).entries,
+        ...(await getFilteredCollectionEntries("talks")).entries,
+        ...(await getFilteredCollectionEntries("projects")).entries,
+    ];
+
+    const tags = [
+        ...new Set(entries.flatMap((post) => post.data.tags || [])),
+    ].sort();
+
+    return tags.map((tag) => ({
+        params: { slug: tag },
+        props: {
+            entries: entries.filter((post) => post.data.tags?.includes(tag)),
+        },
+    }));
+}
+const { slug } = Astro.params;
+const { entries } = Astro.props;
+
+const groupedEntries: {
+    collection: string;
+    entries: CollectionEntry<"blog" | "projects" | "talks">[];
+}[] = [];
+
+let currentCollection: "blog" | "projects" | "talks" | undefined;
+
+for (const entry of entries) {
+    const collection = entry.collection;
+
+    if (collection !== currentCollection) {
+        currentCollection = collection;
+        groupedEntries.push({
+            collection,
+            entries: [],
+        });
+    }
+
+    groupedEntries[groupedEntries.length - 1].entries.push(entry);
+}
+---
+
+<RootPageIndex title={`Tag: ${slug}`}>
+    {
+        (
+            <ul class="animate not-prose mb-12 flex flex-col gap-4">
+                {groupedEntries.map((group) => (
+                    <li>
+                        <div class="mb-4 text-sm text-gray-500">
+                            {group.collection}:
+                        </div>
+                        <ul class="flex flex-col gap-4">
+                            {group.entries.map((entry) => (
+                                <li>
+                                    {group.collection === "blog" ? (
+                                        <BlogCardButton
+                                            entry={
+                                                entry as CollectionEntry<"blog">
+                                            }
+                                        />
+                                    ) : undefined}
+
+                                    {group.collection === "projects" ? (
+                                        <ProjectCardButton
+                                            entry={
+                                                entry as CollectionEntry<"projects">
+                                            }
+                                        />
+                                    ) : undefined}
+
+                                    {group.collection === "talks" ? (
+                                        <TalkCardButton
+                                            entry={
+                                                entry as CollectionEntry<"talks">
+                                            }
+                                        />
+                                    ) : undefined}
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+</RootPageIndex>
