@@ -38,7 +38,7 @@ const { Content, headings } = await entry.render();
   <Container>
     <div class="animate">
       <BackToPrevious href={resolvePath("/blog", Astro.url.pathname)}>
-        Back to blog posts
+        All blog posts
       </BackToPrevious>
     </div>
     <EntryHeader {...entry.data} body={entry.body} />
