@@ -77,7 +77,7 @@ export const TAGS: CollectionSite = {
 type ContactInfo = {
   type: string;
   href: string;
-  account?: string;
+  displayAs?: string;
 }
 
 type ContactSite = ContactInfo[]
@@ -86,17 +86,16 @@ export const CONTACT: ContactSite = [
   {
     type: "Email",
     href: "mailto:email@example.com",
-    account: "email@example.com",
+    displayAs: "email@example.com",
   },
   {
     type: "X",
     href: "https://x.com/BillGates",
-    account: "@BillGates",
+    displayAs: "@BillGates on X",
   },
   {
     type: "GitHub",
     href: "https://github.com/dotnet",
-    account: "dotnet",
   },
   {
     type: "LinkedIn",

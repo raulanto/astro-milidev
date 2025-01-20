@@ -2,6 +2,7 @@
 import { resolvePath } from "@lib/utils";
 import Bio from "./Bio.astro";
 import { GLOBAL } from "@consts";
+import Contact from "./Contact.astro";
 ---
 
 <div class="start mt-4 flex items-center">
@@ -12,9 +13,13 @@ import { GLOBAL } from "@consts";
   />
 
   <div class="flex-grow">
-    <p>
+    <div>
       <strong>Hi, I'm {GLOBAL.author}</strong>
-    </p>
+    </div>
     <Bio small />
+    <p>
+      <strong>Contact me:</strong>
+    </p>
+    <Contact small />
   </div>
 </div>
