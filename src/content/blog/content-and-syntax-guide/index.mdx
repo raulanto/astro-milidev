@@ -163,10 +163,10 @@ If you want to link to a file in the public folder, you might experience problem
 Relative paths work fine with link (they don't with images, [see why](#public-images)):
 
 ```md
-[Link to public file using relative path](../resume/milidev_resume.pdf)
+[Link to public file using relative path](../hire-me/milidev_resume.pdf)
 ```
 
-[Link to public file using relative path](../resume/milidev_resume.pdf)
+[Link to public file using relative path](../hire-me/milidev_resume.pdf)
 
 You might also use the dedicated component `@components/MdxPublicLink.astro` to link to public files. 
 Start your path with `/` and the final path will be resolved taking your `base` property into account.
@@ -174,12 +174,12 @@ Start your path with `/` and the final path will be resolved taking your `base` 
 ```jsx
 import MdxPublicLink from "@components/MdxPublicLink.astro";
 
-<MdxPublicLink href="/resume/milidev_resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
+<MdxPublicLink href="/hire-me/milidev_resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
 ```
 
 import MdxPublicLink from "@components/MdxPublicLink.astro";
 
-<MdxPublicLink href="/resume/milidev_resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
+<MdxPublicLink href="/hire-me/milidev_resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
 
 ---
 
