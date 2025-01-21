@@ -11,34 +11,43 @@ const { small } = Astro.props;
 
 <div style={small ? "font-size: 0.875rem" : ""}>
   <p>
-    Astro Milidev is a minimalistic blog+portfolio <TextLink
+    Astro Milidev is a minimalistic portfolio+blog <TextLink
       href="https://astro.build">Astro</TextLink
     > theme.
   </p>
+
   <p>
-    It originates from <TextLink
-      href="https://github.com/trevortylerlee"
-      external>Trevor Lee</TextLink
-    >'s <TextLink href="https://astro-micro.vercel.app/" external
-      >Astro Micro</TextLink
-    >
-    theme, which is based on <TextLink
-      href="https://github.com/markhorn-dev"
-      external>Mark Horn</TextLink
+    It originates from <TextLink href="https://github.com/trevortylerlee"
+      >Trevor Lee</TextLink
+    >'s <TextLink href="https://astro-micro.vercel.app/">Astro Micro</TextLink> theme,
+    which is based on <TextLink href="https://github.com/markhorn-dev"
+      >Mark Horn</TextLink
     >'s <TextLink href="https://astro-nano-demo.vercel.app/"
       >Astro Nano</TextLink
     > (after "nano" and "micro" comes "mili", hence the first part of the name).
   </p>
+
   <p>
-    I tailored the original theme for my personal website <TextLink
-      href="https://lenar.dev">lenar.dev</TextLink
-    > (hence the second part of the name), added a few features, refactored essential
-    code parts and released as an independent GitHub project.
+    Astro Milidev enhances the above codebases with a variety of features. I
+    customized the original theme for my personal website, <TextLink
+      href="https://lenar.dev/">lenar.dev</TextLink
+    > (hence the second part of the name), and also refactored core parts of the
+    code, making it more customizable and extensible.
   </p>
+
   <p>
-    The full changelog is available <TextLink
-      href={resolvePath("/blog/everything-new-in-astro-milidev")}
-      >in this post</TextLink
+    The changelog is available in this post: <TextLink
+      href={resolvePath(
+        "/blog/everything-new-in-astro-milidev",
+        Astro.url.pathname,
+      )}>Everything new in Astro Milidev</TextLink
+    >. Another post <TextLink
+      href={resolvePath("/blog/getting-started", Astro.url.pathname)}
+      >Getting started</TextLink
+    > explains the configuration process step by step. The code is available on <TextLink
+      href="https://github.com/bartoszlenar/astro-milidev">GitHub</TextLink
     >.
   </p>
+
+  <p>Enjoy!</p>
 </div>
