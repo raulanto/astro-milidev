@@ -1,10 +1,8 @@
 export type CollectionName = "blog" | "projects" | "talks";
 
-type Site = {
-  title: string;
-};
 
-export type GlobalSite = Site & {
+export type GlobalSite = {
+  title: string;
   description: string;
   author: string;
   authorPhotoSrc: string;
@@ -26,18 +24,17 @@ export const GLOBAL: GlobalSite = {
 };
 
 
-type CollectionSite = Site & {
+type CollectionSite =  {
   pageSize: number;
 };
 
-type HomeSite = Site & {
+type HomeSite =  {
   blogEntries?: number;
   projectEntries?: number;
   talkEntries?: number;
 }
 
 export const HOME: HomeSite = {
-  title: "Home title",
   blogEntries: 5,
   projectEntries: 3,
   talkEntries: 3,
@@ -51,7 +48,6 @@ type BlogSite = CollectionSite & {
 };
 
 export const BLOG: BlogSite = {
-  title: "Blog",
   pageSize: 10,
   license: {
     name: "CC BY-NC-ND 4.0",
@@ -60,17 +56,14 @@ export const BLOG: BlogSite = {
 };
 
 export const PROJECTS: CollectionSite = {
-  title: "Projects",
   pageSize: 10,
 };
 
 export const TALKS: CollectionSite = {
-  title: "Talks",
   pageSize: 10,
 };
 
 export const TAGS: CollectionSite = {
-  title: "Tags",
   pageSize: 10,
 };
 
