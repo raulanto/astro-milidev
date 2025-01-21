@@ -30,6 +30,12 @@ The number of items per page is configurable in the `src/consts.ts` file (indivi
 
 The URL address contains collection name followed with a page number. For example, the 3rd page of the `blog` collection is under `https://example.com/blog/3`.
 
+## Tags
+
+Tags are available in Astro Milidev. Yes, the feature has been ported from Astro Micro, but in Astro Milidev
+- tags are available for all collections, not only for the blog
+- tags filtering page supports pagination, exactly like the collection pages
+
 ## Individual OpenGraph images
 
 Each post can have its own OpenGraph image defined by `ogImage` property in the post metadata section. If no image is provided, the global OpenGraph image (`/og-image.png`) is used.
