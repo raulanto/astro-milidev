@@ -1,8 +1,17 @@
 ---
 import Container from "@components/Container.astro";
 import TextLink from "@components/TextLink.astro";
-import { resolvePath } from "@lib/utils";
+import { getFilteredCollectionEntries, resolvePath } from "@lib/utils";
 import { GLOBAL } from "@consts";
+
+const anyBlogPosts =
+  (await getFilteredCollectionEntries("blog")).entries.length > 0;
+
+const anyTalks =
+  (await getFilteredCollectionEntries("talks")).entries.length > 0;
+
+const anyProjects =
+  (await getFilteredCollectionEntries("projects")).entries.length > 0;
 ---
 
 <header transition:persist>
@@ -24,27 +33,38 @@ import { GLOBAL } from "@consts";
         <TextLink href={resolvePath("/hire-me", Astro.url.pathname)}
           >hire me</TextLink
         >
-        <span>
-          {`|`}
-        </span>
-        <TextLink href={resolvePath("/blog", Astro.url.pathname)}>blog</TextLink
-        >
-        <span>
-          {`|`}
-        </span>
-        <TextLink href={resolvePath("/talks", Astro.url.pathname)}
-          >talks</TextLink
-        >
-        <span>
-          {`|`}
-        </span>
-        <TextLink href={resolvePath("/projects", Astro.url.pathname)}
-          >projects</TextLink
-        >
-        <span>
-          {`|`}
-        </span>
-
+        {" "}
+        {
+          anyBlogPosts && (
+            <>
+              <span>{`|`}</span>
+              <TextLink href={resolvePath("/blog", Astro.url.pathname)}>
+                blog
+              </TextLink>
+            </>
+          )
+        }
+        {
+          anyTalks && (
+            <>
+              <span>{`|`}</span>
+              <TextLink href={resolvePath("/talks", Astro.url.pathname)}>
+                talks
+              </TextLink>
+            </>
+          )
+        }
+        {
+          anyProjects && (
+            <>
+              <span>{`|`}</span>
+              <TextLink href={resolvePath("/projects", Astro.url.pathname)}>
+                projects
+              </TextLink>
+            </>
+          )
+        }
+        <span>{`|`}</span>
         <button
           id="magnifying-glass"
           aria-label="Search"
