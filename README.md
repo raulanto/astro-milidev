@@ -22,7 +22,7 @@ Enjoy!
 
 ## Changelog
 
-The current version is v1.0.0
+The current version is v1.1.0
 
 Changelog is available [here](./CHANGELOG.md).
 
