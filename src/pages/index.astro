@@ -41,7 +41,7 @@ const talks = await getCollectionEntries("talks", HOME.talkEntries ?? 0);
         />
       </div>
       <h1 class="animate text-3xl font-semibold text-black dark:text-white">
-        Hi, I'm {GLOBAL.author}
+        ¡Hola!, Mi Nombre es {GLOBAL.author}
       </h1>
       <div class="space-y-16">
         <section>
@@ -61,7 +61,7 @@ const talks = await getCollectionEntries("talks", HOME.talkEntries ?? 0);
                 <h2 class="font-semibold text-black dark:text-white">
                   Recent blog posts
                 </h2>
-                <TextLink href="blog">all blog posts </TextLink>
+                <TextLink href="blog">all blog posts</TextLink>
               </div>
               <ul class="not-prose flex flex-col gap-4">
                 {blog.map((post) => (
@@ -81,7 +81,7 @@ const talks = await getCollectionEntries("talks", HOME.talkEntries ?? 0);
                 <h2 class="font-semibold text-black dark:text-white">
                   Recent talks
                 </h2>
-                <TextLink href="talks">all talks </TextLink>
+                <TextLink href="talks">all talks</TextLink>
               </div>
               <ul class="not-prose flex flex-col gap-4">
                 {talks.map((talk) => (
@@ -100,7 +100,7 @@ const talks = await getCollectionEntries("talks", HOME.talkEntries ?? 0);
                 <h2 class="font-semibold text-black dark:text-white">
                   Recent projects
                 </h2>
-                <TextLink href="projects">all projects </TextLink>
+                <TextLink href="projects">all projects</TextLink>
               </div>
               <ul class="not-prose flex flex-col gap-4">
                 {projects.map((project) => (

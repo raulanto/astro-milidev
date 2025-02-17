@@ -1,3 +1,5 @@
+import * as url from "node:url";
+
 export type CollectionName = "blog" | "projects" | "talks";
 
 
@@ -5,7 +7,7 @@ export type GlobalSite = {
   title: string;
   description: string;
   author: string;
-  authorPhotoSrc: string;
+  authorPhotoSrc: url;
   logo?: {
     darkThemeSrc?: string;
     lightThemeSrc?: string;
@@ -13,10 +15,10 @@ export type GlobalSite = {
 };
 
 export const GLOBAL: GlobalSite = {
-  title: "Astro Milidev",
-  description: "a minimalistic blog+portfolio Astro theme",
-  author: "John Doe",
-  authorPhotoSrc: "/johndoe.png",
+  title: "raulantoDev",
+  description: "Soy un apasionado por la programación y actualmente me desempeño como desarrollador Full Stack",
+  author: "Raul antonio",
+  authorPhotoSrc: "https://avatars.githubusercontent.com/u/74162376?v=4",
   logo: {
     darkThemeSrc: "/logo/logo_dark.png",
     lightThemeSrc: "/logo/logo_light.png",
@@ -83,12 +85,12 @@ export const CONTACT: ContactSite = [
   },
   {
     type: "X",
-    href: "https://x.com/BillGates",
-    displayAs: "@BillGates on X",
+    href: "https://x.com/raul012333",
+    displayAs: "@raulantodev en X",
   },
   {
     type: "GitHub",
-    href: "https://github.com/dotnet",
+    href: "https://github.com/raulanto",
   },
   {
     type: "LinkedIn",
