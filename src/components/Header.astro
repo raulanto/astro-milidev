@@ -18,16 +18,9 @@ const anyProjects =
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
       <TextLink href={resolvePath("/")} underline={false}>
-        {
-          (GLOBAL.logo && (
-            <img
-              id="logo"
-              src={resolvePath(GLOBAL.logo.darkThemeSrc, Astro.url.pathname)}
-              alt={GLOBAL.title}
-              style="max-width: 240px; max-height:50px"
-            />
-          )) || <div class="font-semibold">{GLOBAL.title}</div>
-        }
+        <h1 class="animate text-3xl font-semibold text-black dark:text-white">
+          {GLOBAL.title}
+        </h1>
       </TextLink>
       <nav class="flex items-center gap-1 text-sm">
         <TextLink href={resolvePath("/hire-me", Astro.url.pathname)}
@@ -40,16 +33,6 @@ const anyProjects =
               <span>{`|`}</span>
               <TextLink href={resolvePath("/blog", Astro.url.pathname)}>
                 blog
-              </TextLink>
-            </>
-          )
-        }
-        {
-          anyTalks && (
-            <>
-              <span>{`|`}</span>
-              <TextLink href={resolvePath("/talks", Astro.url.pathname)}>
-                Charlas
               </TextLink>
             </>
           )

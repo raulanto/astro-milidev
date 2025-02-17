@@ -80,8 +80,8 @@ type ContactSite = ContactInfo[]
 export const CONTACT: ContactSite = [
   {
     type: "Email",
-    href: "mailto:email@example.com",
-    displayAs: "email@example.com",
+    href: "raulantodev@gmail.com",
+    displayAs: "Gmail",
   },
   {
     type: "X",
