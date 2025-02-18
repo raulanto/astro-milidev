@@ -24,6 +24,16 @@ body {
   @apply text-black/75 dark:text-white/75;
 }
 
+
+body::before {
+  @apply absolute inset-0;
+  background-image: linear-gradient(to right, #4f4f4f2e 1px, transparent 1px),
+  linear-gradient(to bottom, #4f4f4f2e 1px, transparent 1px);
+  background-size: 14px 24px;
+  mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 110%);
+  content: "";
+}
+
 header {
   @apply fixed left-0 right-0 top-0 z-50 py-6;
   @apply bg-neutral-100/75 dark:bg-neutral-900/75;
@@ -118,3 +128,4 @@ pre {
 .copy-code:active {
   @apply scale-90 transition-transform;
 }
+

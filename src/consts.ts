@@ -94,6 +94,6 @@ export const CONTACT: ContactSite = [
   },
   {
     type: "LinkedIn",
-    href: "https://www.linkedin.com/in/williamhgates/",
+    href: "https://www.linkedin.com/in/raul-antonio-de-la-cruz-hernandez-514464185/",
   },
 ];
