@@ -7,7 +7,7 @@ export type GlobalSite = {
   title: string;
   description: string;
   author: string;
-  authorPhotoSrc: url;
+  authorPhotoSrc: string;
   logo?: {
     darkThemeSrc?: string;
     lightThemeSrc?: string;
