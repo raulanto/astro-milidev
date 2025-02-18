@@ -4,9 +4,11 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
-
+import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
+  adapter: vercel(),
   site: "https://bartoszlenar.github.io",
   base: "/astro-milidev/",
   integrations: [tailwind(), sitemap(), mdx(), pagefind()],
